@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # MC656 - Projeto
 
 **Tema:** Geração de oportunidades acadêmicas para estudantes brasileiros.
