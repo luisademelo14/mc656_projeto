@@ -1,4 +1,4 @@
-RA: 184423 - Letícia Lopes Mendes da Silva
+RA: LET - Letícia Lopes Mendes da Silva
 
 RA: 238001 - Luísa de Melo Barros Penze
 
