@@ -1,9 +1,13 @@
-import React from 'react'
+// app/login/page.tsx - Server Component
+import LoginForm from './LoginForm';
 
-const login = () => {
+const LoginPage = () => {
   return (
-    <h1> Login </h1>
-  )
-}
+    <div>
+      <h1>Login</h1>
+      <LoginForm />
+    </div>
+  );
+};
 
-export default login
+export default LoginPage;
