@@ -29,6 +29,7 @@ const SignUp: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<SignUpForm> = async (data) => {
+    console.log("SUBMITTING", data);
     setIsSubmitting(true);
     setServerError('');
 
@@ -43,13 +44,15 @@ const SignUp: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Erro ao registrar o usuário');
+
+        const errorData = await response.json(); // Captura a resposta do erro
+        throw new Error(errorData.message || 'Erro ao registrar o usuário');
       }
 
       // Sucesso no cadastro
       alert('Usuário cadastrado com sucesso!');
     } catch (error) {
-      setServerError('Erro inesperado');
+      setServerError('Erro Inesperado');
     } finally {
       setIsSubmitting(false);
     }
