@@ -17,4 +17,13 @@ const config: Config = {
   },
   plugins: [],
 }
+
+
+module.exports = {
+  //...
+  plugins: [
+    require('daisyui'),
+  ],
+}
+
 export default config
