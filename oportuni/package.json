@@ -19,10 +19,10 @@
     "postcss": "8.4.47",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "tailwindcss": "3.4.12",
     "typescript": "5.6.2"
   },
   "devDependencies": {
-    "daisyui": "^4.12.10"
+    "daisyui": "^4.12.10",
+    "tailwindcss": "^3.4.12"
   }
 }
