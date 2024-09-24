@@ -7,7 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   await dbConnect();
-  const { email, password } = req.body;
+  const { email, password, age } = req.body;
   if (!email || !password) {
     return res.status(400).json({ message: "Email and password are required" });
   }
@@ -16,7 +16,7 @@ export default async function handler(
     return res.status(400).json({ message: "User already exists" });
   }
   const hashedPassword = bcrypt.hashSync(password, 10);
-  const newUser = new User({ email, password: hashedPassword });
+  const newUser = new User({ email, password: hashedPassword, age });
   await newUser.save();
   return res.status(201).json({ message: "Signup successful!" });
 }
