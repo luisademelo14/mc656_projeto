@@ -20,6 +20,14 @@ const Recuperacao: React.FC = () => {
           });
           const result = await res.json();
             setMessage(result.message);
+        
+            if (res.status === 200) {
+                setMessage('O procedimento de recuperação foi enviado para o seu Email!');
+            } else if (res.status === 600) {
+                setMessage('Por favor, insira um email válido');
+            } else {
+                setMessage('Por favor, insira o email utilizado para se cadastrar');
+            }
         } catch (error) {
           setMessage('Erro ao conectar ao servidor. Por favor, tente novamente.');
         }
