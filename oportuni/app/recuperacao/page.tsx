@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
+import AuthForm from "../../components/AuthForm";
 import Box from '@mui/material/Box';
 import Link from 'next/link';
 // import { handleRecuperacao } from '../comunicacao/comunicacao';
@@ -45,7 +46,7 @@ const Recuperacao = () => {
                             label="Digite seu Email"
                             variant="standard"
                             value={email}
-                            onChange={}
+                            onChange={handleEmailChange}
                             error={!isValid}
                             helperText={!isValid ? 'O email parece inválido' : ''}
                         />
@@ -57,7 +58,7 @@ const Recuperacao = () => {
                         <button
                             id="button-recuperar"
                             className="button green"
-                            onClick={() => handleRecuperacao(email, isValid, setMessage)}
+                            // onClick={() => handleRecuperacao(email, isValid, setMessage)}
                         >
                             Recuperar Senha
                         </button>
