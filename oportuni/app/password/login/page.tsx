@@ -31,11 +31,14 @@ const Login: React.FC = () => {
 
   return (
     <Box 
+      justifyContent={'center'}
+      display="flex"
       sx={{
         backgroundImage: 'url(/imagens/capa.png)',
         backgroundSize: 'auto',
         backgroundPosition: 'center',
         minHeight: '100vh',
+        minWidth: '100vw',
         borderRadius: '38px',
         padding: 2,
       }}
@@ -43,8 +46,10 @@ const Login: React.FC = () => {
       <Box 
         marginTop="10vh" 
         bgcolor="#FEFFEE" 
-        borderRadius="38px"  
-        display="flex"  
+        borderRadius="38px"
+        maxWidth="50vw"
+        maxHeight={'70vh'}  
+        display="grid"  
         className="default-text bold-text large-text"  
         p={2}
         >

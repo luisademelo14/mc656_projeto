@@ -88,8 +88,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
               type="submit"
               className="button"
             >
-              {/* {mode} */}
-              Entrar
+              {mode === "Signup" ? "Cadastre-se" : mode === "Login" ? "Entrar" : "Recuperar"}
             </button>
           </Box>
         </Box>

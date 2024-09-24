@@ -7,30 +7,19 @@ import './styles.css';
 
 const Recuperacao: React.FC = () => {
     // Variáveis de estado
-    const [email, setEmail] = useState('');
-    const [isValid, setIsValid] = useState(true);
     const [message, setMessage] = useState('');
 
-    const handleRecuperacao = async (data: {email: string}) => {
-        if (!isValid) {
-          setMessage('Por favor, insira um email válido.');
-          return;
-        }
-      
+    const handleRecuperacao = async (data: {email: string}) => {      
         try {
-          const response = await fetch('/api/auth/password/recupera', {
+          const res = await fetch('/api/auth/password/recupera', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email }),
+            body: JSON.stringify(data),
           });
-      
-          if (response.ok) {
-            setMessage('Verificação de email enviada. Por favor, verifique sua caixa de entrada.');
-          } else {
-            setMessage('Erro ao enviar verificação de email. Por favor, tente novamente.');
-          }
+          const result = await res.json();
+            setMessage(result.message);
         } catch (error) {
           setMessage('Erro ao conectar ao servidor. Por favor, tente novamente.');
         }
@@ -39,46 +28,38 @@ const Recuperacao: React.FC = () => {
     return (
         <main>
             <Box
+                justifyContent={'center'}
+                display={'flex'}
                 sx={{
                     backgroundImage: 'url(/imagens/capa.png)',
                     backgroundSize: 'auto',
                     backgroundPosition: 'center',
                     minHeight: '100vh',
+                    minWidth: '100vw',
                     borderRadius: '38px',
                     padding: 2,
                 }}
             >
-                <Box marginTop="30vh" bgcolor="#FEFFEE" borderRadius="38px">
-                    <Box className="default-text bold-text large-text" justifyContent="center" display="flex"  p={2}>
+                <Box 
+                marginTop="10vh" 
+                bgcolor="#FEFFEE" 
+                borderRadius="38px"
+                maxWidth="50vw"
+                maxHeight={'70vh'}
+                display="grid"
+                className="default-text bold-text large-text"
+                >
+                    <Box className="default-text bold-text" justifyContent="center" display="flex"  p={2}>
                         <h1>Recuperação de Senha</h1>
                     </Box>
                     <Box justifyContent="center" display="flex" className="default-text body" p={2}>
-                        <TextField
-                            id="Email"
-                            className="black-text"
-                            label="Digite seu Email"
-                            variant="standard"
-                            value={email}
-                            onChange={handleEmailChange}
-                            error={!isValid}
-                            helperText={!isValid ? 'O email parece inválido' : ''}
-                        />
+                        <AuthForm mode="Recuperacao" onSubmit={handleRecuperacao} />
                     </Box>
                     <Box className="default-text body" p={2}>
                         {message && <p>{message}</p>}
                     </Box>
-                    <Box display="flex" justifyContent="center" className="button" p={2}>
-                        <button
-                            id="button-recuperar"
-                            className="button green"
-                            // onClick={() => handleRecuperacao(email, isValid, setMessage)}
-                        >
-                            Recuperar Senha
-                        </button>
-                    </Box>
-                    <Box display="flex" justifyContent="center" className="default-text underline-text" p={2}>
+                    <Box className="default-text small-text underline-text center-text">
                         <h1>
-                            <br />
                             <Link href="/">Voltar para Home</Link>
                         </h1>
                     </Box>
