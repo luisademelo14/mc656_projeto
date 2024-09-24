@@ -2,13 +2,16 @@
 import { useState } from "react";
 import AuthForm from "../../../components/AuthForm";
 import Link from "next/link";
+import { Box } from "@mui/material";
+
+
 
 const Login: React.FC = () => {
   const [message, setMessage] = useState("");
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleLogin = async (data: { email: string; password: string }) => {
+  const handleLogin = async (data: { email: string; password?: string }) => {
     const res = await fetch("/api/auth/password/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -26,8 +29,12 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md w-full max-w-md">
+    <Box 
+    className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900"
+    >
+      <Box 
+      className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md w-full max-w-md"
+      >
         {isSuccessful ? (
           <p className="text-green-500 text-center text-lg font-semibold">
             Welcome!
@@ -51,8 +58,8 @@ const Login: React.FC = () => {
             {message}
           </p>
         )}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
