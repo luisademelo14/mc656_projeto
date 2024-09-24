@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import AuthForm from "../../components/AuthForm";
 import Box from '@mui/material/Box';
 import Link from 'next/link';
-// import { handleRecuperacao } from '../comunicacao/comunicacao';
+import { handleRecuperacao } from '../comunicacao/comunicacao';
 import '../recuperacao/styles.css';
 
 const Recuperacao = () => {
