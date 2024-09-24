@@ -49,9 +49,6 @@ const Recuperacao: React.FC = () => {
                 display="grid"
                 className="default-text bold-text large-text"
                 >
-                    <Box className="default-text bold-text" justifyContent="center" display="flex"  p={2}>
-                        <h1>Recuperação de Senha</h1>
-                    </Box>
                     <Box justifyContent="center" display="flex" className="default-text body" p={2}>
                         <AuthForm mode="Recuperacao" onSubmit={handleRecuperacao} />
                     </Box>
@@ -60,7 +57,7 @@ const Recuperacao: React.FC = () => {
                     </Box>
                     <Box className="default-text small-text underline-text center-text">
                         <h1>
-                            <Link href="/">Voltar para Home</Link>
+                            <Link href="/password/login">Voltar para Login</Link>
                         </h1>
                     </Box>
                 </Box>
