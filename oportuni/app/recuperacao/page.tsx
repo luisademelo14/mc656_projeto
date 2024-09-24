@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Link from 'next/link';
-import { handleRecuperacao } from '../comunicacao/comunicacao';
+// import { handleRecuperacao } from '../comunicacao/comunicacao';
 import '../recuperacao/styles.css';
 
 const Recuperacao = () => {
@@ -45,7 +45,7 @@ const Recuperacao = () => {
                             label="Digite seu Email"
                             variant="standard"
                             value={email}
-                            onChange={handleEmailChange}
+                            onChange={}
                             error={!isValid}
                             helperText={!isValid ? 'O email parece inválido' : ''}
                         />
