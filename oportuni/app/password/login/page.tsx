@@ -3,6 +3,7 @@ import { useState } from "react";
 import AuthForm from "../../../components/AuthForm";
 import Link from "next/link";
 import { Box } from "@mui/material";
+import '../recuperacao/styles.css';
 
 
 
@@ -30,24 +31,46 @@ const Login: React.FC = () => {
 
   return (
     <Box 
-    className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900"
-    >
-      <Box 
-      className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md w-full max-w-md"
+      sx={{
+        backgroundImage: 'url(/imagens/capa.png)',
+        backgroundSize: 'auto',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+        borderRadius: '38px',
+        padding: 2,
+      }}
       >
+      <Box 
+        marginTop="10vh" 
+        bgcolor="#FEFFEE" 
+        borderRadius="38px"  
+        display="flex"  
+        className="default-text bold-text large-text"  
+        p={2}
+        >
         {isSuccessful ? (
-          <p className="text-green-500 text-center text-lg font-semibold">
+          <p>
             Welcome!
           </p>
         ) : (
-          <>
+          <Box className="default-text">
             <AuthForm mode="Login" onSubmit={handleLogin} />
-            <Link href="/password/signup">
-              <p className="text-center text-blue-500 font-bold underline py-4">
-                Create a new account
-              </p>
-            </Link>
-          </>
+            <br />
+            <Box 
+            className= "default-text small-text underline-text center-text" 
+            >
+              <Link href="/password/recuperacao">
+                <h1>
+                  Esqueci a senha
+                </h1>
+              </Link>
+              <Link href="/password/signup">
+                <h1>
+                  É meu primeiro acesso
+                </h1>
+              </Link>
+            </Box>
+          </Box>
         )}
         {message && (
           <p

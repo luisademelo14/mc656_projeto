@@ -1,6 +1,6 @@
 "use client";
 import { useState, FormEvent, useEffect } from "react";
-import '../app/recuperacao/styles.css';
+import '../app/password/recuperacao/styles.css';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
@@ -35,72 +35,65 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
   };
 
   return (
-    <Box
-      sx={{
-        backgroundImage: 'url(/imagens/capa.png)',
-        backgroundSize: 'auto',
-        backgroundPosition: 'center',
-        minHeight: '100vh',
-        borderRadius: '38px',
-        padding: 2,
-      }}
-    >
-    <form onSubmit={handleSubmit}>
-    <Box marginTop="30vh" bgcolor="#FEFFEE" borderRadius="38px">
-      <Box className="default-text bold-text large-text" justifyContent="center" display="flex"  p={2}>
-        <h1>Oportuni</h1>
-      </Box>
-      <Box justifyContent="center" display="flex" className="default-text body" p={2}>
-        <TextField
-          label="Email"
-          type="email"
-          className="black-text"
-          variant="standard"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          fullWidth
-          margin="normal"
-          />
-      </Box>
-      {mode !== "Recuperacao" && (
-        <Box justifyContent="center" display="flex" className="default-text body" p={2}>
-          <TextField
-            label="Password"
-            type="password"
-            className="black-text"
-            variant="standard"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            fullWidth
-            margin="normal"
+    <Box>
+      <form onSubmit={handleSubmit}>
+        <Box marginTop="10vh" bgcolor="#FEFFEE" borderRadius="38px">
+          <Box className="default-text bold-text large-text" justifyContent="center" display="flex" p={2}>
+            <h1>Oportuni</h1>
+          </Box>
+          <Box justifyContent="center" display="flex" className="default-text body" p={2}>
+            <TextField
+              label="Email"
+              type="email"
+              className="black-text"
+              variant="standard"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              fullWidth
+              margin="normal"
             />
+          </Box>
+          {mode !== "Recuperacao" && (
+            <Box justifyContent="center" display="flex" className="default-text body" p={2}>
+              <TextField
+                label="Password"
+                type="password"
+                className="black-text"
+                variant="standard"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                fullWidth
+                margin="normal"
+              />
+            </Box>
+          )}
+          {mode === "Signup" && (
+            <Box justifyContent="center" display="flex" className="default-text body" p={2}>
+              <TextField
+                label="Age"
+                type="text"
+                className="black-text"
+                variant="standard"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                fullWidth
+                margin="normal"
+              />
+            </Box>
+          )}
+          <Box display="flex" justifyContent="center" className="button" p={1}>
+            <button
+              type="submit"
+              className="button"
+            >
+              {/* {mode} */}
+              Entrar
+            </button>
+          </Box>
         </Box>
-      )}
-      {mode === "Signup" && (
-        <Box justifyContent="center" display="flex" className="default-text body" p={2}>
-          <TextField
-            label="Age"
-            type="text"
-            className="black-text"
-            variant="standard"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-            fullWidth
-            margin="normal"
-            />
-        </Box>
-      )}
-      <Box display="flex" justifyContent="center" className="button" p={2}>
-        <button 
-        type="submit"
-        className="button green"
-        >{mode}
-        </button>
-      </Box>
-    </Box>
-    </form>
+      </form>
     </Box>
   );
 };

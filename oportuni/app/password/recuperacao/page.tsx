@@ -1,27 +1,40 @@
 "use client";
 import React, { useState } from 'react';
-import TextField from '@mui/material/TextField';
-import AuthForm from "../../components/AuthForm";
+import AuthForm from "../../../components/AuthForm";
 import Box from '@mui/material/Box';
 import Link from 'next/link';
-import { handleRecuperacao } from '../comunicacao/comunicacao';
-import '../recuperacao/styles.css';
+import './styles.css';
 
-const Recuperacao = () => {
+const Recuperacao: React.FC = () => {
     // Variáveis de estado
     const [email, setEmail] = useState('');
     const [isValid, setIsValid] = useState(true);
     const [message, setMessage] = useState('');
 
-    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setEmail(value);
-        if (value.includes('@')) {
-            setIsValid(true);
-        } else {
-            setIsValid(false);
+    const handleRecuperacao = async (data: {email: string}) => {
+        if (!isValid) {
+          setMessage('Por favor, insira um email válido.');
+          return;
         }
-    };
+      
+        try {
+          const response = await fetch('/api/auth/password/recupera', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email }),
+          });
+      
+          if (response.ok) {
+            setMessage('Verificação de email enviada. Por favor, verifique sua caixa de entrada.');
+          } else {
+            setMessage('Erro ao enviar verificação de email. Por favor, tente novamente.');
+          }
+        } catch (error) {
+          setMessage('Erro ao conectar ao servidor. Por favor, tente novamente.');
+        }
+      };
 
     return (
         <main>
