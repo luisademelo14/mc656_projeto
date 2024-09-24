@@ -26,9 +26,13 @@
     "typescript": "5.6.2"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.24.7",
+    "@shelf/jest-mongodb": "^4.3.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/jest": "^29.5.13",
     "jest": "^29.7.0",
+    "node-mocks-http": "^1.16.0",
+    "supertest": "^7.0.0",
     "ts-jest": "^29.2.5"
   }
 }
