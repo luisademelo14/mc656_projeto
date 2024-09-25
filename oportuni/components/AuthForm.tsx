@@ -1,11 +1,11 @@
 "use client";
 import { useState, FormEvent, useEffect } from "react";
-import '../app/password/recuperacao/styles.css';
+import '../app/password/recovery/styles.css';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 interface AuthFormProps {
-  mode: "Signup" | "Login" | "Recuperacao";
+  mode: "Signup" | "Login" | "Recovery";
   onSubmit: (data: { email: string; password?: string; age?: string }) => void;
   resetForm?: boolean;
 }
@@ -54,7 +54,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
               margin="normal"
             />
           </Box>
-          {mode !== "Recuperacao" && (
+          {mode !== "Recovery" && (
             <Box justifyContent="center" display="flex" className="default-text body" p={2}>
               <TextField
                 label="Password"

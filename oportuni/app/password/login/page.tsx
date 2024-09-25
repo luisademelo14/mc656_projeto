@@ -3,7 +3,7 @@ import { useState } from "react";
 import AuthForm from "../../../components/AuthForm";
 import Link from "next/link";
 import { Box } from "@mui/material";
-import '../recuperacao/styles.css';
+import '../recovery/styles.css';
 
 
 
@@ -64,7 +64,7 @@ const Login: React.FC = () => {
             <Box 
             className= "default-text small-text underline-text center-text" 
             >
-              <Link href="/password/recuperacao">
+              <Link href="/password/recovery">
                 <h1>
                   Esqueci a senha
                 </h1>
