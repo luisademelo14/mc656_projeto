@@ -15,7 +15,8 @@ export default async function handler(
   if (!user) {
     return res.status(401).json({ message: "Invalid credentials" });
   }
-  const isValidPassword = bcrypt.compareSync(password, user.password);
+  // const isValidPassword = bcrypt.compareSync(password, user.password);
+  const isValidPassword = (password == user.password);
   if (!isValidPassword) {
     return res.status(402).json({ message: "Invalid password" });
   }
