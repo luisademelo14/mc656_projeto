@@ -2,13 +2,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, using the Node Package Manager (npm), install the dependencies:
+First, enter the oportuni directory. Using the Node Package Manager (npm), install the dependencies:
 
 ```bash
 npm install
 ```
 
-Then, enter the oportuni directory and run the application:
+To run the application:
 
 ```bash
 npm run build
