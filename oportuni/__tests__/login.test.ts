@@ -6,9 +6,10 @@ describe('Login API', () => {
     jest.clearAllMocks();
   });
 
+  // 1
   it('should return 400 if email or password is missing', async () => {
     const { req, res } = createRequestResponse('POST', {
-      email: '', // Missing email
+      email: '',    // Missing email
       password: '', // Missing password
     });
     await login(req, res);
@@ -16,8 +17,9 @@ describe('Login API', () => {
     expect(res._getJSONData()).toEqual({ message: 'Email and password are required' });
   });
 
+  // 2
   it('should return 400 if user does not exist', async () => {
-    User.findOne.mockResolvedValue(null); // Mock findOne to return null
+    User.findOne.mockResolvedValue(null);
     const { req, res } = createRequestResponse('POST', {
       email: 'test@example.com',
       password: 'password123',
@@ -27,6 +29,7 @@ describe('Login API', () => {
     expect(res._getJSONData()).toEqual({ message: 'Invalid credentials' });
   });
 
+  // 3
   it('should return 400 if password is invalid', async () => {
     User.findOne.mockResolvedValue({ email: 'test@example.com', password: bcrypt.hashSync('password123', 10) });
     const { req, res } = createRequestResponse('POST', {
@@ -38,6 +41,7 @@ describe('Login API', () => {
     expect(res._getJSONData()).toEqual({ message: 'Invalid password' });
   });
 
+  // 4
   it('should return 200 if login is successful', async () => {
     User.findOne.mockResolvedValue({ email: 'test@example.com', password: bcrypt.hashSync('password123', 10) });
     const { req, res } = createRequestResponse('POST', {
