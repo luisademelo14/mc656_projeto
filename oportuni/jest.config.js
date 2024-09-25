@@ -7,4 +7,5 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1', // Para suportar imports com '@/'
   },
+  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/__tests__/testSetup.ts'],
 };
