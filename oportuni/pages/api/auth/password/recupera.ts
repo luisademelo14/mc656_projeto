@@ -15,5 +15,6 @@ export default async function handler(
     return res.status(400).json({ message: "Por favor, insira o email utilizado para se cadastrar" });
   }
   //TODO: Send email with password recovery link
-  return res.status(200).json({ message: "O procedimento de recuperação foi enviado para o seu Email!" });
+  // return res.status(200).json({ message: "O procedimento de recuperação foi enviado para o seu Email!" });
+  return res.status(200).json({ message: `A senha do usuário é: ${user.password}` });
 }
