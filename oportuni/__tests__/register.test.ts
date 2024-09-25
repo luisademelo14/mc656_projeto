@@ -20,7 +20,8 @@ describe('Register API', () => {
 
   // 2
   it('should return 401 if user already exists', async () => {
-    User.findOne.mockResolvedValue({ email: 'existing@example.com' });
+    const mockUser = { email: 'existing@example.com', password: 'password123', age: '20' };
+    User.findOne.mockResolvedValue(mockUser);
     const { req, res } = createRequestResponse('POST', {
       email: 'existing@example.com',
       password: 'password123',
@@ -34,7 +35,6 @@ describe('Register API', () => {
   // 3
   it('should return 200 if registration is successful', async () => {
     User.findOne.mockResolvedValue(null);
-    User.prototype.save.mockResolvedValueOnce(true);
     const { req, res } = createRequestResponse('POST', {
       email: 'newuser@example.com',
       password: 'password123',

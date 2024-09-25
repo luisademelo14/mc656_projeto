@@ -29,7 +29,7 @@ describe('Recover API', () => {
 
   // 3
   it('should return 200 if recovery is successful', async () => {
-    const mockUser = { email: 'existing@example.com', password: 'password123' };
+    const mockUser = { email: 'existing@example.com', password: 'password123', age: '20' };
     User.findOne.mockResolvedValue(mockUser);
     const { req, res } = createRequestResponse('POST', {
       email: 'existing@example.com',

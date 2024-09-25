@@ -31,7 +31,9 @@ describe('Login API', () => {
 
   // 3
   it('should return 400 if password is invalid', async () => {
-    User.findOne.mockResolvedValue({ email: 'test@example.com', password: bcrypt.hashSync('password123', 10) });
+    // const mockUser = { email: 'test@example.com', password: bcrypt.hashSync('password123', 10) };
+    const mockUser = { email: 'test@example.com', password: 'password123', age: '20' };
+    User.findOne.mockResolvedValue(mockUser);
     const { req, res } = createRequestResponse('POST', {
       email: 'test@example.com',
       password: 'wrongpassword',
@@ -43,7 +45,9 @@ describe('Login API', () => {
 
   // 4
   it('should return 200 if login is successful', async () => {
-    User.findOne.mockResolvedValue({ email: 'test@example.com', password: bcrypt.hashSync('password123', 10) });
+    // const mockUser = { email: 'test@example.com', password: bcrypt.hashSync('password123', 10) };
+    const mockUser = { email: 'test@example.com', password: 'password123', age: '20' };
+    User.findOne.mockResolvedValue(mockUser);
     const { req, res } = createRequestResponse('POST', {
       email: 'test@example.com',
       password: 'password123',
