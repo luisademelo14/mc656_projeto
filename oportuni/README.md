@@ -5,14 +5,19 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, using the Node Package Manager (npm), install the dependencies:
 
 ```bash
-npm install bcryptjs mongoose mongodb
+npm install
 ```
 
-Then, enter the oportuni directory and run:
+Then, enter the oportuni directory and run the application:
 
 ```bash
 npm run build
 npm start
+```
+
+To run all tests:
+```bash
+npm test
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
