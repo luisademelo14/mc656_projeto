@@ -13,10 +13,10 @@ export default async function handler(
   }
   const existingUser = await User.findOne({ email });
   if (existingUser) {
-    return res.status(400).json({ message: "User already exists" });
+    return res.status(401).json({ message: "User already exists" });
   }
   const hashedPassword = bcrypt.hashSync(password, 10);
   const newUser = new User({ email, password: hashedPassword, age });
   await newUser.save();
-  return res.status(201).json({ message: "Signup successful!" });
+  return res.status(200).json({ message: "Signup successful!" });
 }
