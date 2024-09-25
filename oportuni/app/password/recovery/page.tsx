@@ -5,13 +5,13 @@ import Box from '@mui/material/Box';
 import Link from 'next/link';
 import './styles.css';
 
-const Recuperacao: React.FC = () => {
+const Recovery: React.FC = () => {
     // Variáveis de estado
     const [message, setMessage] = useState('');
 
-    const handleRecuperacao = async (data: {email: string}) => {      
+    const handleRecovery = async (data: {email: string}) => {      
         try {
-            const res = await fetch('/api/auth/password/recupera', {
+            const res = await fetch('/api/auth/password/recover', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const Recuperacao: React.FC = () => {
                 className="default-text bold-text large-text"
                 >
                     <Box justifyContent="center" display="flex" className="default-text body" p={2}>
-                        <AuthForm mode="Recuperacao" onSubmit={handleRecuperacao} />
+                        <AuthForm mode="Recovery" onSubmit={handleRecovery} />
                     </Box>
                     <Box className="default-text body" p={2}>
                         {message && <p>{message}</p>}
@@ -66,4 +66,4 @@ const Recuperacao: React.FC = () => {
     );
 };
 
-export default Recuperacao;
+export default Recovery;
