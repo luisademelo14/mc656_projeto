@@ -1,4 +1,4 @@
-Roteiro de Entrevista - App de Oportunidades Acadêmicas
+Roteiro de Entrevista Oportuni - Tempo estimado: 15 minutos
 ## 1. Introdução
 
 Objetivo da Entrevista: "Olá, obrigado por participar da nossa entrevista. Estamos desenvolvendo um aplicativo para ajudar alunos a encontrar oportunidades acadêmicas, como bolsas, concursos, eventos e outros programas educacionais. Queremos ouvir suas necessidades e opiniões para entender como podemos fazer isso da melhor forma para você."
