@@ -1,11 +1,11 @@
 Roteiro de Entrevista - App de Oportunidades Acadêmicas
 ## 1. Introdução
 
-    Objetivo da Entrevista: "Olá, obrigado por participar da nossa entrevista. Estamos desenvolvendo um aplicativo para ajudar alunos a encontrar oportunidades acadêmicas, como bolsas, concursos, eventos e outros programas educacionais. Queremos ouvir suas necessidades e opiniões para entender como podemos fazer isso da melhor forma para você."
+Objetivo da Entrevista: "Olá, obrigado por participar da nossa entrevista. Estamos desenvolvendo um aplicativo para ajudar alunos a encontrar oportunidades acadêmicas, como bolsas, concursos, eventos e outros programas educacionais. Queremos ouvir suas necessidades e opiniões para entender como podemos fazer isso da melhor forma para você."
 
-    Tempo de Duração: "A entrevista deve durar cerca de 30 minutos. Tudo o que você nos disser será confidencial e usado para melhorar o aplicativo."
+Tempo de Duração: "A entrevista deve durar cerca de 30 minutos. Tudo o que você nos disser será confidencial e usado para melhorar o aplicativo."
 
-    Confirmação do Consentimento: "Você está de acordo em continuar com a entrevista?"
+Confirmação do Consentimento: "Você está de acordo em continuar com a entrevista?"
 
 ## 2. Perguntas de Contexto
 
