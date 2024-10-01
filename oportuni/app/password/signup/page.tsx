@@ -43,7 +43,7 @@ const Signup: React.FC = () => {
         borderRadius="16px"
         maxWidth={'400px'}
         width={'100%'}
-        maxHeight="130vh"
+        maxHeight="80vh"
         display="grid"
         className="default-text bold-text large-text"
         p = {2}

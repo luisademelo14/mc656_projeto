@@ -47,7 +47,7 @@ const Login: React.FC = () => {
         borderRadius="16px"
         maxWidth={'400px'}
         width={'100%'}
-        maxHeight={'80vh'}  
+        maxHeight={'70vh'}  
         display="grid"  
         className="default-text bold-text large-text"  
         p={2}
@@ -61,7 +61,7 @@ const Login: React.FC = () => {
             <AuthForm mode="Login" onSubmit={handleLogin} />
             <br />
             <Box 
-            className= "default-text small-text underline-text center-text" 
+              className= "default-text small-text underline-text center-text" 
             >
               <Link href="/password/recovery">
                 <h1>
