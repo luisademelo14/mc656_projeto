@@ -31,7 +31,7 @@ const Recovery: React.FC = () => {
                 justifyContent={'center'}
                 display={'flex'}
                 sx={{
-                    backgroundImage: 'url(/imagens/capa.png)',
+                    backgroundImage: 'url(/imagens/fundo.png)',
                     backgroundSize: 'auto',
                     backgroundPosition: 'center',
                     minHeight: '100vh',

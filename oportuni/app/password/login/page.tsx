@@ -34,21 +34,20 @@ const Login: React.FC = () => {
       justifyContent={'center'}
       display="flex"
       sx={{
-        backgroundImage: 'url(/imagens/capa.png)',
+        backgroundImage: 'url(/imagens/fundo.jpg)',
         backgroundSize: 'auto',
         backgroundPosition: 'center',
         minHeight: '100vh',
         minWidth: '100vw',
-        borderRadius: '38px',
-        padding: 2,
       }}
       >
       <Box 
         marginTop="10vh" 
         bgcolor="#FEFFEE" 
-        borderRadius="38px"
-        maxWidth="50vw"
-        maxHeight={'70vh'}  
+        borderRadius="16px"
+        maxWidth={'400px'}
+        width={'100%'}
+        maxHeight={'80vh'}  
         display="grid"  
         className="default-text bold-text large-text"  
         p={2}

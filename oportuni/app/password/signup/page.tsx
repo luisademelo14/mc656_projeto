@@ -3,6 +3,7 @@ import { useState } from "react";
 import AuthForm from "../../../components/AuthForm";
 import Link from "next/link";
 import Box from "@mui/material/Box";
+import React from "react";
 
 
 const Signup: React.FC = () => {
@@ -26,54 +27,62 @@ const Signup: React.FC = () => {
   };
   return (
     <Box 
-      justifyContent={'center'}
-      display={'flex'}
+      justifyContent="center"
+      display="flex"
       sx={{
-          backgroundImage: 'url(/imagens/capa.png)',
-          backgroundSize: 'auto',
-          backgroundPosition: 'center',
-          minHeight: '100vh',
-          minWidth: '100vw',
-          borderRadius: '38px',
-          padding: 2,
+        backgroundImage: 'url(/imagens/fundo.jpg)',
+        backgroundSize: 'auto',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+        minWidth: '100vw',
+        padding: 2,
       }}
     >
       <Box 
-        marginTop="10vh" 
         bgcolor="#FEFFEE" 
-        borderRadius="38px"
-        maxWidth="50vw"
-        maxHeight={'70vh'}
+        borderRadius="16px"
+        maxWidth={'400px'}
+        width={'100%'}
+        maxHeight="130vh"
         display="grid"
         className="default-text bold-text large-text"
+        p = {2}
       >
         {isSuccessful ? (
-          <Box>
-            <p className="text-green-500 text-center text-lg font-semibold">
-              Welcome!
-            </p>
-          </Box>
-        ) : (
-          <AuthForm mode="Signup" onSubmit={handleSignup} />
-        )}
-        {message && (
-          <p
-            className={`text-center mt-4 ${
-              isSuccess ? "text-green-500" : "text-red-500"
-            }`}
+          <p 
+            className="text-green-500 text-center"
+            style={{ fontSize: '14px', fontWeight: 'bold' }}  // Ajuste do tamanho da fonte
           >
-            {message}
+            Welcome!
           </p>
+        ) : (
+          <>
+            <AuthForm 
+              mode="Signup" 
+              onSubmit={handleSignup}
+            />
+  
+            {message && (
+              <p
+                className={`text-center mt-4 ${
+                  isSuccess ? "text-red-500" : "text-green-800" 
+                }`}
+                style={{ fontSize: '20px' }}  // Ajuste de fonte na mensagem de sucesso ou erro
+              >
+                {message}
+              </p>
+            )}
+  
+            <Box className="default-text small-text underline-text center-text" marginTop="20px">
+              <Link href="/password/login">
+                <h1>Voltar para Login</h1>
+              </Link>
+            </Box>
+          </>
         )}
-        <Box className="default-text small-text underline-text center-text">
-          <Link href="/password/login">
-            <h1>
-              Voltar para Login
-            </h1>
-          </Link>
-        </Box>
       </Box>
     </Box>
   );
-};
+  
+}
 export default Signup;

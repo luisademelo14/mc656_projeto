@@ -3,6 +3,7 @@ import { useState, FormEvent, useEffect } from "react";
 import '../app/password/recovery/styles.css';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Typography from "@mui/material/Typography";
 
 interface AuthFormProps {
   mode: "Signup" | "Login" | "Recovery";
@@ -37,10 +38,14 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
   return (
     <Box>
       <form onSubmit={handleSubmit}>
-        <Box marginTop="10vh" bgcolor="#FEFFEE" borderRadius="38px">
-          <Box className="default-text bold-text large-text" justifyContent="center" display="flex" p={2}>
-            <h1>Oportuni</h1>
-          </Box>
+        <Box marginTop="9vh" bgcolor="#FEFFEE" borderRadius="38px">
+        
+        <Box display="flex" justifyContent="center">
+          <Typography variant="h2" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'black' }}>
+            Oportuni
+          </Typography>
+        </Box>
+
           <Box justifyContent="center" display="flex" className="default-text body" p={2}>
             <TextField
               label="Email"
