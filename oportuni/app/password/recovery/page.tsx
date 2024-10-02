@@ -31,12 +31,11 @@ const Recovery: React.FC = () => {
                 justifyContent={'center'}
                 display={'flex'}
                 sx={{
-                    backgroundImage: 'url(/imagens/capa.png)',
+                    backgroundImage: 'url(/imagens/fundo.jpg)',
                     backgroundSize: 'auto',
                     backgroundPosition: 'center',
                     minHeight: '100vh',
                     minWidth: '100vw',
-                    borderRadius: '38px',
                     padding: 2,
                 }}
             >
@@ -44,12 +43,13 @@ const Recovery: React.FC = () => {
                 marginTop="10vh" 
                 bgcolor="#FEFFEE" 
                 borderRadius="38px"
-                maxWidth="50vw"
+                width = {"100%"}
+                maxWidth="400px"
                 maxHeight={'70vh'}
                 display="grid"
                 className="default-text bold-text large-text"
                 >
-                    <Box justifyContent="center" display="flex" className="default-text body" p={2}>
+                    <Box display="grid" className="default-text body" p={2}>
                         <AuthForm mode="Recovery" onSubmit={handleRecovery} />
                     </Box>
                     <Box className="default-text body" p={2}>

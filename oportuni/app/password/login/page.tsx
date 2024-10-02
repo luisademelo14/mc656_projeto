@@ -34,20 +34,19 @@ const Login: React.FC = () => {
       justifyContent={'center'}
       display="flex"
       sx={{
-        backgroundImage: 'url(/imagens/capa.png)',
+        backgroundImage: 'url(/imagens/fundo.jpg)',
         backgroundSize: 'auto',
         backgroundPosition: 'center',
         minHeight: '100vh',
         minWidth: '100vw',
-        borderRadius: '38px',
-        padding: 2,
       }}
       >
       <Box 
         marginTop="10vh" 
         bgcolor="#FEFFEE" 
-        borderRadius="38px"
-        maxWidth="50vw"
+        borderRadius="16px"
+        maxWidth={'400px'}
+        width={'100%'}
         maxHeight={'70vh'}  
         display="grid"  
         className="default-text bold-text large-text"  
@@ -62,7 +61,7 @@ const Login: React.FC = () => {
             <AuthForm mode="Login" onSubmit={handleLogin} />
             <br />
             <Box 
-            className= "default-text small-text underline-text center-text" 
+              className= "default-text small-text underline-text center-text" 
             >
               <Link href="/password/recovery">
                 <h1>
