@@ -1,16 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AuthForm from "../../../components/AuthForm";
 import Link from "next/link";
 import { Box } from "@mui/material";
 import '../recovery/styles.css';
-
-
+import { useRouter } from "next/navigation"; // Import useRouter to handle navigation
 
 const Login: React.FC = () => {
   const [message, setMessage] = useState("");
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const router = useRouter(); // Initialize useRouter
+
+  useEffect(() => {
+    // Perform redirection only after successful login
+    if (isSuccess) {
+      router.push("/home"); // Redirect to /home after success
+    }
+  }, [isSuccess, router]); // Dependency array to re-run the effect only when isSuccess changes
 
   const handleLogin = async (data: { email: string; password?: string }) => {
     const res = await fetch("/api/auth/password/login", {
@@ -23,7 +30,7 @@ const Login: React.FC = () => {
 
     if (res.status === 200) {
       setIsSuccessful(true);
-      setIsSuccess(true);
+      setIsSuccess(true); // This will trigger the redirect
     } else {
       setIsSuccess(false);
     }
@@ -90,4 +97,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login; 
+export default Login;
