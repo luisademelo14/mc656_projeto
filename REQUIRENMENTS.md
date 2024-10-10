@@ -107,3 +107,59 @@ Esportes: na opinião da entrevistada, o app ficaria "bagunçado" se tivesse tal
 ## 7. Fechamento
 
 Pergunta Aberta: não tinha algo a acrescentar.
+
+# Entrevista 02 (durou aprox, 15 min)
+
+## 1. Introdução
+
+Confirmação do Consentimento: estava de acordo com a continuidade da entrevista.
+
+## 2. Perguntas de Contexto
+
+Nome e Idade: Edyjonas, 18 anos.
+
+Nível de Escolaridade: está no 3° ano do ensino médio.
+
+Rede de Ensino: escola pública
+
+Interesses Acadêmicos: humanas, área esportiva, educação física, nutrição. Quero fazer faculdade, e talvez de Educação Física.
+
+## 3. Experiência Atual na Busca de Oportunidades
+
+Busca Atual de Oportunidades: campeonatos de vôlei e de karatê, e campeonatos de esportes no geral.
+
+Dificuldades Enfrentadas: achar campeonatos/peneiras pela falta de informaçoes sobre inscrição e complexidade, tudo meio "jogado", não existem regras gerais de inscrição para esse tipo de campeonato.
+
+Recursos Utilizados: olhar em grupos de whatsapp de pessoas interessadas nisso, mas fica restrito ao que é enviado.
+
+## 4. Necessidades e Expectativas
+
+Funcionalidades Esperadas: tem uma parte de seleção de qual a área específica que ele busca e um passo-a-passo bem específico de documentos necessário pra se inscrever e o que mais for necessário para se preparar para cada oportunidade.
+
+Personalização: sim, ao abrir o app perguntar as áreas de interesse, e que o algoritmo se adeque a isso. Ele quer apenas oportunidades ligadas à sua própria área de interesse, inclusive ele falou de ir rankeando as oportunidades por nível de dificuldade de se inscrever, nível de competitividade ou de dificuldade de inscrição seria interessante
+
+Compartilhamento e Suporte: sim. Mais na parte da divulgação, ele que é de cidade do interior, falou sobre como muita gente ficava sabendo de ultima hora, e que se ele tivesse acesso poderia compartilhar com os colegas e ficar sabendo mais rápido, facilitando chegar nas pessoas que querem participar. Seria mais fácil compartilhar pelo app pq já vem com todas as informacões.
+
+
+## 5. Preferências Tecnológicas e Usabilidade
+
+Dispositivo Preferido: No geral, pc ou celular, ele disse que é bem equilibrado, mas que pra fazer pesquisas desse tipo de coisa, geralmente usa mais o celular.
+
+Design Simples ou Complexo: ele prefere mais complexo, pra achar especificamente o tipo de oportunidade que ele ta procurando, pra poupar o tempo de ficar vendo coisas que ele não tem interesse, então ele prefere passar mais tempo personalizando.
+
+Dificuldades com Aplicativos: Nunca teve, pois nunca nem viu nenhum.
+
+
+## 6. Validação de Ideias
+
+Feedback de Funcionalidades: Sim, pensa que ajudaria muito. Ele também sugeriu facilitar a interação entre quem quer divulgar e a plataforma, para não perder de divulgar nenhuma oportunidade. Acha importante a questão da localização, pra achar as oportunidades mais próximas, colocando o que está mais perto primeiro. Também pensa que vale a pena mostrar as premiações
+
+
+Interação com Professores e Instituições: Ele pensou em uma página de, por exemplo, um time, na qual ele consegue o contato do técnico, pra poder contactar ou pedir pra notificá-lo diretamente, tirar dúvidas etc. Achou bastante interessante facilitar esse contato
+
+
+Esportes: o entrevistado demonstrou interesse maior em esportes e pensa ser indispensável.
+
+## 7. Fechamento
+
+Pergunta Aberta: ele pensa que seria bom se ele pudesse especificar exatamente quem ele é, com os dados como idade, interesse, ano do ensino médio etc, pra que a plataforma não recomende coisas que ele não possa participar. Também gostaria de ter a possibilidade de especificar se queria oportunidades pagas/gratuitas etc. Em geral, ele falou sobre filtros "de base" como idade, de forma que a plataforma nunca iria mostrar uma oportunidade que não é para a idade dele a não ser que ele mudasse nas configurações, e sobre filtros mutáveis, que ele poderia selecionar a cada acesso, como filtros de pago/gratuito, data, local etc.
