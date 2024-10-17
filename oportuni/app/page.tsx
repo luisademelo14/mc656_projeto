@@ -1,20 +1,19 @@
 import Link from 'next/link';
 import { Box, Button, Typography } from '@mui/material'; // Se você estiver usando Material-UI
 
-export default function Home() {
+export default function Welcome() {
   return (
-    <Box
+    <Box 
+      justifyContent={'center'}
+      display="flex"
       sx={{
         backgroundImage: 'url(/imagens/fundo.jpg)',
-        backgroundSize: 'cover',
+        backgroundSize: 'auto',
         backgroundPosition: 'center',
         minHeight: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 2,
+        minWidth: '100vw',
       }}
-    >
+      >
       <Box
         sx={{
           bgcolor: '#FEFFEE',
