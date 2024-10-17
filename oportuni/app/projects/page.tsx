@@ -5,21 +5,23 @@ import Link from "next/link";
 import "../recovery/styles.css";
 
 interface Project {
-  startDate: Date; // Mudança para Date
+  id: number; // Adicionando o ID como um atributo do tipo int
+  startDate: Date; 
   name: string;
   description: string;
   imageUrl: string;
-  participants: string[]; // Adicionando o atributo participants como um vetor de strings
+  participants: string[];
 }
 
 const ProjectPage: React.FC = () => {
   const [project] = useState<Project>({
-    startDate: new Date("2024-11-01"), // Inicializando como um objeto Date
+    id: 1, // Inicializando o ID do projeto
+    startDate: new Date("2024-11-01"),
     name: "Projeto Acadêmico X",
     description:
       "Este projeto visa explorar novas metodologias de ensino para alunos do ensino médio, focando em atividades práticas e inovadoras.",
     imageUrl: "/imagens/projeto.jpg",
-    participants: [], // Inicializando como um vetor vazio
+    participants: [],
   });
   
   const handleSignup = () => {
@@ -52,7 +54,8 @@ const ProjectPage: React.FC = () => {
       >
         <Box className="default-text">
           <h2>{project.name}</h2>
-          <p>Data de Início: {project.startDate.toLocaleDateString("pt-BR")}</p> {/* Formatação da data */}
+          <p>ID do Projeto: {project.id}</p> {/* Exibindo o ID do projeto */}
+          <p>Data de Início: {project.startDate.toLocaleDateString("pt-BR")}</p>
           <p>{project.description}</p>
           <Box
             component="img"
@@ -73,7 +76,7 @@ const ProjectPage: React.FC = () => {
             {project.participants.length > 0 ? (
               <ul>
                 {project.participants.map((participant, index) => (
-                  <li key={index}>{participant}</li> // Lista de participantes
+                  <li key={index}>{participant}</li>
                 ))}
               </ul>
             ) : (
