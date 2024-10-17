@@ -15,7 +15,7 @@ const Login: React.FC = () => {
   useEffect(() => {
     // Perform redirection only after successful login
     if (isSuccess) {
-      router.push("/home"); // Redirect to /home after success
+      router.push("/pages/home"); // Redirect to /home after success
     }
   }, [isSuccess, router]); // Dependency array to re-run the effect only when isSuccess changes
 
