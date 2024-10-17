@@ -30,13 +30,10 @@ jobs:
         cache-dependency-path: ./oportuni/package-lock.json
     
     - name: Install dependencies
-      run: npm ci
-      working-directory: ./oportuni    
+      run: npm ci    
     
     - name: Build project
-      run: npm run build --if-present
-      working-directory: ./oportuni      
+      run: npm run build --if-present      
     
     - name: Run tests
       run: npm test
-      working-directory: ./oportuni
