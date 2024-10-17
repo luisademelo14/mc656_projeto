@@ -1,5 +1,5 @@
 import { createRequestResponse, bcrypt, User } from './testSetup';
-const login = require('@/pages/api/auth/password/login').default;
+const login = require('@/src/pages/api/auth/password/login').default;
 
 describe('Login API', () => {
   beforeEach(() => {

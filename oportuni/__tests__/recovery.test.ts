@@ -1,5 +1,5 @@
 import { createRequestResponse, User } from './testSetup';
-const recover = require('@/pages/api/auth/password/recover').default;
+const recover = require('@/src/pages/api/auth/password/recover').default;
 
 describe('Recover API', () => {
   beforeEach(() => {

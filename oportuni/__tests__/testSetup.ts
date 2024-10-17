@@ -1,11 +1,11 @@
 process.env.MONGODB_URI = 'mocked_mongodb_uri';
 
 const httpMocks = require('node-mocks-http');
-const User = require('@/models/User');
+const User = require('@/src/models/User');
 const bcrypt = require('bcryptjs');
 
-jest.mock('@/lib/mongodb');         // mocking the dbConnect function
-jest.mock('@/models/User', () => {  // mocking the User model
+jest.mock('@/src/lib/mongodb');         // mocking the dbConnect function
+jest.mock('@/src/models/User', () => {  // mocking the User model
   const mockUser = jest.fn();
   return mockUser;
 });

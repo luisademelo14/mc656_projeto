@@ -1,5 +1,5 @@
 import { createRequestResponse, bcrypt, User } from './testSetup';
-const register = require('@/pages/api/auth/password/register').default;
+const register = require('@/src/pages/api/auth/password/register').default;
 
 describe('Register API', () => {
   beforeEach(() => {
