@@ -163,3 +163,37 @@ Esportes: o entrevistado demonstrou interesse maior em esportes e pensa ser indi
 ## 7. Fechamento
 
 Pergunta Aberta: ele pensa que seria bom se ele pudesse especificar exatamente quem ele é, com os dados como idade, interesse, ano do ensino médio etc, pra que a plataforma não recomende coisas que ele não possa participar. Também gostaria de ter a possibilidade de especificar se queria oportunidades pagas/gratuitas etc. Em geral, ele falou sobre filtros "de base" como idade, de forma que a plataforma nunca iria mostrar uma oportunidade que não é para a idade dele a não ser que ele mudasse nas configurações, e sobre filtros mutáveis, que ele poderia selecionar a cada acesso, como filtros de pago/gratuito, data, local etc.
+
+# Elaboração da segunda parte da avaliação
+
+## Épico 1: Rede de Conexões entre Estudantes
+
+Descrição: Criar um ambiente onde os estudantes possam se conectar, interagir e trocar experiências sobre projetos acadêmicos.
+
+História de Usuário 1.1: "Como estudante, quero poder adicionar colegas à minha rede de conexões para que eu possa acompanhar suas atividades e manter contato."
+
+História de Usuário 1.2: "Como estudante, quero poder visualizar o perfil dos meus colegas para saber sobre suas experiências e participações em projetos acadêmicos."
+
+## Épico 2: Busca e Descoberta de Projetos Acadêmicos
+
+Descrição: Facilitar a busca de oportunidades acadêmicas para que os estudantes encontrem projetos de interesse.
+
+História de Usuário 2.1: "Como estudante, quero poder buscar projetos acadêmicos por palavras-chave e áreas de interesse, para encontrar aqueles que sejam mais relevantes para mim."
+
+História de Usuário 2.2: "Como estudante, quero visualizar uma descrição detalhada dos projetos, incluindo os requisitos e benefícios, para que eu possa tomar uma decisão informada sobre em quais me inscrever."
+
+## Épico 3: Compartilhamento de Participações em Projetos
+
+Descrição: Permitir que os estudantes compartilhem suas experiências em projetos para fortalecer sua rede e visibilidade.
+
+História de Usuário 3.1: "Como estudante, quero poder postar sobre minha participação em um projeto, para que outros estudantes vejam minha experiência e possam comentar ou interagir."
+
+História de Usuário 3.2: "Como estudante, quero poder visualizar um feed de atividades dos meus colegas, incluindo suas postagens sobre projetos, para me inspirar e conhecer novas oportunidades."
+
+## Épico 4: Processo de Inscrição em Projetos Acadêmicos
+
+Descrição: Facilitar a inscrição dos estudantes em projetos acadêmicos diretamente pela plataforma, proporcionando um processo simples e intuitivo.
+
+História de Usuário 4.1: "Como estudante, quero poder me inscrever em um projeto diretamente pelo aplicativo, para que eu possa participar das oportunidades de forma rápida e sem complicações."
+
+História de Usuário 4.2: "Como estudante, quero receber uma notificação de confirmação quando minha inscrição em um projeto for aceita, para que eu tenha certeza de que estou participando oficialmente."
