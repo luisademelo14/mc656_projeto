@@ -171,29 +171,28 @@ Pergunta Aberta: ele pensa que seria bom se ele pudesse especificar exatamente q
 Descrição: Criar um ambiente onde os estudantes possam se conectar, interagir e trocar experiências sobre projetos acadêmicos.
 
 História de Usuário 1.1: "Como estudante, quero poder adicionar colegas à minha rede de conexões para que eu possa acompanhar suas atividades e manter contato."
+- critérios de aceitação: O usuário deve conseguir encontrar outros estudantes pelo nome ou outras informações (como escola). Um botão "Adicionar Conexão" deve estar visível no perfil do estudante encontrado; Após adicionar a conexão, o estudante deve visualizar a nova conexão em sua lista de contatos.
 
 História de Usuário 1.2: "Como estudante, quero poder visualizar o perfil dos meus colegas para saber sobre suas experiências e participações em projetos acadêmicos."
+- critérios de aceitação: O perfil do estudante deve exibir uma lista de projetos em que o estudante participou, com descrições claras; O perfil deve incluir informações básicas, como nome, escola, e área de interesse; O usuário deve conseguir acessar o perfil dos colegas a partir de sua rede de conexões ou através de buscas.
 
 ## Épico 2: Busca e Descoberta de Projetos Acadêmicos
 
 Descrição: Facilitar a busca de oportunidades acadêmicas para que os estudantes encontrem projetos de interesse.
 
 História de Usuário 2.1: "Como estudante, quero poder buscar projetos acadêmicos por palavras-chave e áreas de interesse, para encontrar aqueles que sejam mais relevantes para mim."
+- critérios de aceitação: A funcionalidade de busca deve permitir filtrar projetos por palavras-chave e áreas de interesse; A busca deve retornar uma lista de projetos relacionados com os filtros aplicados.
 
 História de Usuário 2.2: "Como estudante, quero visualizar uma descrição detalhada dos projetos, incluindo os requisitos e benefícios, para que eu possa tomar uma decisão informada sobre em quais me inscrever."
+- critérios de aceitação: A página de detalhes do projeto deve incluir o título, descrição, requisitos, benefícios, e prazos
 
 ## Épico 3: Compartilhamento de Participações em Projetos
 
 Descrição: Permitir que os estudantes compartilhem suas experiências em projetos para fortalecer sua rede e visibilidade.
 
 História de Usuário 3.1: "Como estudante, quero poder postar sobre minha participação em um projeto, para que outros estudantes vejam minha experiência e possam comentar ou interagir."
+- critérios de aceitação: O estudante deve conseguir criar um post descrevendo sua participação em um projeto, com título, descrição e, opcionalmente, imagens ou links; O post deve ser exibido no feed de atividades para outros estudantes visualizarem.
 
 História de Usuário 3.2: "Como estudante, quero poder visualizar um feed de atividades dos meus colegas, incluindo suas postagens sobre projetos, para me inspirar e conhecer novas oportunidades."
+- critérios de aceitação: O feed deve exibir os posts mais recentes dos colegas da rede de conexões do estudante; As postagens no feed devem exibir o nome do autor, a descrição do projeto e a data da postagem.
 
-## Épico 4: Processo de Inscrição em Projetos Acadêmicos
-
-Descrição: Facilitar a inscrição dos estudantes em projetos acadêmicos diretamente pela plataforma, proporcionando um processo simples e intuitivo.
-
-História de Usuário 4.1: "Como estudante, quero poder me inscrever em um projeto diretamente pelo aplicativo, para que eu possa participar das oportunidades de forma rápida e sem complicações."
-
-História de Usuário 4.2: "Como estudante, quero receber uma notificação de confirmação quando minha inscrição em um projeto for aceita, para que eu tenha certeza de que estou participando oficialmente."
