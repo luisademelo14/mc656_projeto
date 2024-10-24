@@ -1,93 +1,148 @@
 "use client";
 import { useState } from "react";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Chip } from "@mui/material";
 import Link from "next/link";
 import "../recovery/styles.css";
 
 interface Project {
-  id: number; // Adicionando o ID como um atributo do tipo int
-  startDate: Date; 
+  id: number;
+  startDate: Date;
   name: string;
   description: string;
   imageUrl: string;
   participants: string[];
+  minAge: number;
+  category: string;
+  certification: "SIM" | "NÃO";
+  educationLevel: string;
+  friendParticipants: string[]; // Lista de amigos participando
+  topics: string[]; // Tópicos de aprendizado
 }
 
 const ProjectPage: React.FC = () => {
   const [project] = useState<Project>({
-    id: 1, // Inicializando o ID do projeto
-    startDate: new Date("2024-11-01"),
-    name: "Projeto Acadêmico X",
+    id: 1,
+    startDate: new Date("2024-05-19"),
+    name: "Simulações da ONU",
     description:
-      "Este projeto visa explorar novas metodologias de ensino para alunos do ensino médio, focando em atividades práticas e inovadoras.",
-    imageUrl: "/imagens/projeto.jpg",
+      "As Simulações da ONU são eventos acadêmicos que simulam as discussões e negociações das Nações Unidas.",
+    imageUrl: "/imagens/onu.jpg", // Substitua pela URL correta
     participants: [],
+    minAge: 13,
+    category: "Simulações da ONU",
+    certification: "SIM",
+    educationLevel: "Ensino Médio",
+    friendParticipants: ["Beatriz"],
+    topics: ["Comunicação", "Geopolítica"],
   });
-  
+
   const handleSignup = () => {
-    // Lógica para realizar a inscrição do usuário no projeto.
     alert("Inscrição realizada com sucesso!");
   };
 
   return (
-    <Box 
-      justifyContent={'center'}
+    <Box
+      justifyContent={"center"}
       display="flex"
       sx={{
-        backgroundImage: 'url(/imagens/fundo.jpg)',
+        backgroundImage: 'url(/imagens/fundo.jpg)', // Fundo personalizado
         backgroundSize: 'auto',
         backgroundPosition: 'center',
         minHeight: '100vh',
         minWidth: '100vw',
       }}
     >
-      <Box 
-        marginTop="10vh" 
-        bgcolor="#FEFFEE" 
+      <Box
+        marginTop="10vh"
+        bgcolor="#FEFFEE"
         borderRadius="16px"
-        maxWidth={'400px'}
-        width={'100%'}
-        maxHeight={'70vh'}  
-        display="grid"  
-        className="default-text bold-text large-text"  
+        maxWidth="400px"
+        width="100%"
+        display="grid"
+        className="default-text"
         p={2}
+        sx={{ textAlign: 'center' }}
       >
-        <Box className="default-text">
-          <h2>{project.name}</h2>
-          <p>ID do Projeto: {project.id}</p> {/* Exibindo o ID do projeto */}
-          <p>Data de Início: {project.startDate.toLocaleDateString("pt-BR")}</p>
-          <p>{project.description}</p>
-          <Box
-            component="img"
-            src={project.imageUrl}
-            alt={project.name}
-            sx={{ width: "100%", borderRadius: "8px", marginTop: "16px" }}
-          />
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{ marginTop: "16px" }}
-            onClick={handleSignup}
-          >
-            Inscreva-se
-          </Button>
-          <Box marginTop={2}>
-            <h4>Participantes:</h4>
-            {project.participants.length > 0 ? (
-              <ul>
-                {project.participants.map((participant, index) => (
-                  <li key={index}>{participant}</li>
-                ))}
-              </ul>
-            ) : (
-              <p>Nenhum participante inscrito.</p>
-            )}
+        {/* Imagem no topo */}
+        <Box
+          component="img"
+          src={project.imageUrl}
+          alt={project.name}
+          sx={{ width: "100%", borderRadius: "8px", marginBottom: "16px" }}
+        />
+
+        {/* Rótulo "Feito para você!" */}
+        <Box
+          sx={{
+            backgroundColor: "#111",
+            color: "#FFF",
+            padding: "4px 8px",
+            borderRadius: "8px",
+            marginBottom: "16px",
+            fontSize: "14px",
+            display: "inline-block",
+          }}
+        >
+          Feito para você!
+        </Box>
+
+        {/* Informações sobre inscrições */}
+        <Box className="default-text bold-text large-text">
+          <p>Inscrições até 10/05/2024</p>
+          <p>
+            <strong>{project.startDate.toLocaleDateString("pt-BR")}</strong> - Online
+          </p>
+        </Box>
+
+        {/* Botão de inscrição */}
+        <Button
+          variant="contained"
+          color="primary"
+          sx={{ marginBottom: "16px" }}
+          onClick={handleSignup}
+        >
+          Clique aqui para se inscrever
+        </Button>
+
+        {/* Informações detalhadas sobre o projeto */}
+        <Box sx={{ textAlign: "left", marginTop: "16px" }}>
+          <p><strong>Categoria:</strong> {project.category}</p>
+          <p><strong>Idade:</strong> {project.minAge} a 23 anos</p>
+          <p><strong>Educação:</strong> {project.educationLevel}</p>
+          <p><strong>Certificação:</strong> {project.certification}</p>
+          <p><strong>Amigos participando:</strong> {project.friendParticipants.join(", ")}</p>
+        </Box>
+
+        {/* Tópicos que serão aprendidos */}
+        <Box sx={{ marginBottom: "16px" }}>
+          <strong>Você vai aprender</strong>
+          <Box>
+            {project.topics.map((topic, index) => (
+              <Chip
+                key={index}
+                label={topic}
+                sx={{ margin: "4px", fontSize: "14px" }}
+              />
+            ))}
           </Box>
         </Box>
-        <Box 
-          className="default-text small-text underline-text center-text"
-          marginTop={2}
+
+        {/* Descrição do Projeto */}
+        <Box sx={{ textAlign: "left" }}>
+          <p><strong>Descrição do Projeto:</strong></p>
+          <p>{project.description}</p>
+        </Box>
+
+        {/* Botão para compartilhar */}
+        <Button
+          variant="outlined"
+          sx={{ marginTop: "16px" }}
         >
+          Compartilhar com amigos
+        </Button>
+
+        {/* Link para voltar */}
+        <Box className="default-text small-text underline-text center-text" marginTop={2}>
           <Link href="/">
             <h1>Voltar para a página inicial</h1>
           </Link>
