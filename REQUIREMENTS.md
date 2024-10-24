@@ -196,3 +196,34 @@ Para esta etapa, utilizamos duas técnicas de elicitação de requisitos: **entr
 
 ---
 # Jornada de Usuário
+
+Nesta técnica de elicitação de requisitos, elaboramos 3 jornadas de usuário para 3 personas diferentes.
+
+## Jornada de Usuário - 01
+### Persona
+
+- **Nome:** Laís
+- **Idade:**
+- **Nível de escolaridade:**
+
+### Cenário
+Lais tem o sonho de explorar suas habilidades acadêmicas, buscando oportunidades. Ela se sente incerta por ainda não ter conseguido realizar esse objetivo.
+
+### Objetivo
+- Encontrar oportunidades acadêmicas.
+- Descobrir pré-requisitos e como se preparar.
+- Realizar seu sonho.
+
+---
+
+| *Fases*   | *Ação*                                             | *Pensamentos e Emoções*                       | *Pontos Críticos*                               | *Oportunidades e Ideias*                   |
+|-------------|------------------------------------------------------|-------------------------------------------------|--------------------------------------------------|----------------------------------------------|
+| *Antes*   | Procurar app para oportunidades acadêmicas            | "Lembrou da indicação de amigos."               | Não encontrar o app ou a opção correta            | Melhor indicação de apps                     |
+| *Durante* | Procurar as oportunidades e pré-requisitos            | "Essa é a oportunidade que me indicaram!"       | E se os pré-requisitos forem difíceis?            | Disponibilizar guias de estudo               |
+| *Depois*  | Confirmar participação e se preparar para os desafios | "Consegui encontrar uma oportunidade!"          | Dúvida se tem a preparação suficiente             | Oferecer materiais de apoio                  |
+
+---
+
+## Jornada de Usuário - 02
+
+## Jornada de Usuário - 03
