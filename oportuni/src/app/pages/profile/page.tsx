@@ -21,16 +21,24 @@ const Perfil = () => {
     <div className="flex flex-col justify-between min-h-screen w-full bg-white">
       <div className="flex-grow flex flex-col items-center p-6">
         <div className="w-full max-w-3xl">
-          <div className="header flex justify-between items-center w-full">
+          {/* Header ajustado com padding para evitar corte */}
+          <div className="header flex justify-between items-center w-full py-4">
             <button className="voltar-button text-2xl">←</button>
             <h1 className="text-2xl font-semibold">Meu perfil</h1>
             <button className="editar-button text-2xl">✎</button>
           </div>
 
+          {/* Perfil Info */}
           <div className="perfil-info mt-6 text-center">
+            {/* Ajuste de tamanho da foto de perfil */}
             <div className="perfil-foto mx-auto">
-              <img src="/avatar.png" alt="Avatar" className="w-32 h-32 rounded-full border-2 border-gray-300" />
+              <img 
+                src="/avatar.png" 
+                alt="Avatar" 
+                className="w-32 h-32 rounded-full border-2 border-gray-300 object-cover" 
+              />
             </div>
+
             <h2 className="mt-4 text-xl font-bold">{usuario.nomeUsuario}</h2>
 
             <div className="informacoes-publicas mt-6 text-left">
@@ -41,7 +49,11 @@ const Perfil = () => {
               <div className="projetos-atuais mt-4">
                 <p><strong>Projetos atuais:</strong></p>
                 <div className="projeto flex items-center mt-2">
-                  <img src={usuario.projetosAtuais[0].logo} alt={usuario.projetosAtuais[0].nome} className="w-12 h-12 mr-4" />
+                  <img 
+                    src={usuario.projetosAtuais[0].logo} 
+                    alt={usuario.projetosAtuais[0].nome} 
+                    className="w-12 h-12 mr-4" 
+                  />
                   <span>{usuario.projetosAtuais[0].nome}</span>
                 </div>
               </div>
@@ -50,7 +62,9 @@ const Perfil = () => {
                 <p><strong>Amigos:</strong></p>
                 <div className="amigos-lista flex gap-4 mt-2">
                   {usuario.amigos.map((amigo, index) => (
-                    <span key={index} className="amigo bg-gray-200 rounded-full px-3 py-1 text-sm">{amigo}</span>
+                    <span key={index} className="amigo bg-gray-200 rounded-full px-3 py-1 text-sm">
+                      {amigo}
+                    </span>
                   ))}
                 </div>
               </div>
