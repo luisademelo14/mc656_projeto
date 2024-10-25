@@ -201,7 +201,7 @@ Para esta etapa, utilizamos duas técnicas de elicitação de requisitos: **entr
 
 # Jornada de Usuário
 
-Nesta técnica de elicitação de requisitos, elaboramos 2 jornadas de usuário para 3 personas diferentes.
+Nesta técnica de elicitação de requisitos, elaboramos 2 jornadas de usuário para 2 personas diferentes.
 
 ## Jornada de Usuário - 01
 
