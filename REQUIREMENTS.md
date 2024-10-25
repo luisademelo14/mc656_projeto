@@ -1,7 +1,9 @@
 # Elicitação de Requisitos
+
 Para esta etapa, utilizamos duas técnicas de elicitação de requisitos: **entrevista** e **jornada de usuário**. Na primeira técnica, utilizamos um roteiro para realizar 3 entrevistas com o público alvo do projeto.
 
 ---
+
 # Roteiro de Entrevista - Oportuni
 
 ### 1. Introdução
@@ -61,6 +63,7 @@ Para esta etapa, utilizamos duas técnicas de elicitação de requisitos: **entr
 **Agradecimento:** "Muito obrigado por sua participação! Suas respostas nos ajudarão bastante a criar um aplicativo que realmente faça diferença para você."
 
 ---
+
 ## Registro de Entrevista - 01
 
 * **Duração:** Aproximadamente 10 minutos
@@ -195,32 +198,34 @@ Para esta etapa, utilizamos duas técnicas de elicitação de requisitos: **entr
 * **Pergunta Aberta:** acredita que a quantidade de funcionalidades sugeridas já seria suficiente para atender às suas necessidades no aplicativo. Sugestões específicas foram feitas ao longo da entrevista.
 
 ---
+
 # Jornada de Usuário
 
-Nesta técnica de elicitação de requisitos, elaboramos 3 jornadas de usuário para 3 personas diferentes.
+Nesta técnica de elicitação de requisitos, elaboramos 2 jornadas de usuário para 3 personas diferentes.
 
 ## Jornada de Usuário - 01
+
 ### Persona
 
 - **Nome:** Laís
-- **Idade:**
-- **Nível de escolaridade:**
+- **Idade:** 15 anos
+- **Nível de escolaridade:** 1º ano do ensino médio
 
 ### Cenário
+
 Lais tem o sonho de explorar suas habilidades acadêmicas, buscando oportunidades. Ela se sente incerta por ainda não ter conseguido realizar esse objetivo.
 
 ### Objetivo
+
 - Encontrar oportunidades acadêmicas.
 - Descobrir pré-requisitos e como se preparar.
 - Realizar seu sonho.
 
----
-
-| *Fases*   | *Ação*                                             | *Pensamentos e Emoções*                       | *Pontos Críticos*                               | *Oportunidades e Ideias*                   |
-|-------------|------------------------------------------------------|-------------------------------------------------|--------------------------------------------------|----------------------------------------------|
-| *Antes*   | Procurar app para oportunidades acadêmicas            | "Lembrou da indicação de amigos."               | Não encontrar o app ou a opção correta            | Melhor indicação de apps                     |
-| *Durante* | Procurar as oportunidades e pré-requisitos            | "Essa é a oportunidade que me indicaram!"       | E se os pré-requisitos forem difíceis?            | Disponibilizar guias de estudo               |
-| *Depois*  | Confirmar participação e se preparar para os desafios | "Consegui encontrar uma oportunidade!"          | Dúvida se tem a preparação suficiente             | Oferecer materiais de apoio                  |
+| Fases             | Ação                                                                                                                                                                  | Pensamentos                                                                                                                                                                                                           | Emoções                                                                                                                          | Pontos Críticos                                                                                                                                              | Oportunidades e Ideias         |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| **Antes**   | - Procurar sites para encontrar oportunidades acadêmicas.<br />- Fazer cadastro e login.                                                                               | - "Vou finalmente buscar por oportunidades acadêmicas que fazem sentido pra mim!"<br />- "Colocar minhas informações deve ajudar a achar oportunidades voltadas para os meus interesses."                         | - Curiosidade e preocupação se irá encontrar algo que a satisfaça.<br />- Animação para ver as oportunidades disponíveis. | - Não conseguir se cadastrar.<br />- Não encontrar opção de interesse.                                                                                   | Melhor indicação de sites    |
+| **Durante** | - Filtrar de acordo com suas preferências.<br />- Escolher as oportunidades que mais combinam com ela.<br />- Verificar os pré-requisitos e formas de se preparar. | - "Essas parecem interessantes, agora preciso escolher as que eu gostei mais e que eu possa participar".<br />- "Essa oportunidade é perfeita para mim! Eu me encaixo nos requisitos e ela me parece interessante!" | - Expectativa<br />- Entusiasmo<br />- Animação para se inscrever e começar a participar da atividade                           | - Não conseguir usar o filtro para encontrar oportunidades para o seu perfil.<br />- Dificuldade de encontrar uma oportunidade de combine com o seu perfil | Disponibilizar guias de estudo |
+| **Depois**  | - Se inscrever e começar a se preparar pra tirar o máximo da oportunidade escolhida.<br />- Sair do site.                                                            | - "Consegui encontrar uma oportunidade!"<br />- "Estou gostando de participar dessa atividade!"                                                                                                                      | - Satisfação<br />- Felicidade                                                                                                   | - Dúvida se tem a preparação suficiente.<br />- Não conseguir se inscrever na oportunidade.                                                              | Oferecer materiais de apoio    |
 
 ---
 
