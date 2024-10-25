@@ -1,6 +1,6 @@
 # Elicitação de Requisitos
 
-Para esta etapa, utilizamos duas técnicas de elicitação de requisitos: **entrevista** e **jornada de usuário**. Na primeira técnica, utilizamos um roteiro para realizar 3 entrevistas com o público alvo do projeto.
+Para esta etapa, utilizamos duas técnicas de elicitação de requisitos: **entrevista** e **jornada de usuário**. Na primeira técnica, utilizamos um roteiro para realizar 3 entrevistas com o público alvo do projeto. Na técnica  seguinte, elaboramos 2 jornadas de usuário para 2 personas diferentes.
 
 ---
 
@@ -201,7 +201,6 @@ Para esta etapa, utilizamos duas técnicas de elicitação de requisitos: **entr
 
 # Jornada de Usuário
 
-Nesta técnica de elicitação de requisitos, elaboramos 2 jornadas de usuário para 2 personas diferentes.
 
 ## Jornada de Usuário - 01
 
@@ -242,11 +241,11 @@ Lais tem o sonho de explorar suas habilidades acadêmicas, buscando oportunidade
 - **Nome:** Athur
 - **Idade:** 17 anos
 - **Nível de escolaridade:** 2º ano do ensino médio
-- **História:** 
+- **História:** 17 Anos. Está no 2º ano do EM. Vive em uma comunidade da Zona Oeste do Rio de Janeiro. Arthur não tem muitos incentivos de estudo na escola e busca atividades que possam lhe proporcionar oportunidades de ter uma vida melhor e ajudar sua família.
 
 ### Cenário
 
-Ouviu falar do oportuni em uma palestra na escola. Se sente incomodado com as reprovações no colégio, e pensa em parar de estudar para conseguir um emprego logo. Tem medo de não encontrar oportunidades melhores na vida.
+Ouviu falar do oportuni em um post nas redes sociais. Se sente incomodado com as reprovações no colégio, e pensa em parar de estudar para conseguir um emprego logo. Tem medo de não encontrar oportunidades melhores na vida.
 
 ### Objetivo
 
