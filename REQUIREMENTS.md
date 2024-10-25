@@ -1,6 +1,6 @@
 # Elicitação de Requisitos
 
-Para esta etapa, utilizamos duas técnicas de elicitação de requisitos: **entrevista** e **jornada de usuário**. Na primeira técnica, utilizamos um roteiro para realizar 3 entrevistas com o público alvo do projeto. Na técnica  seguinte, elaboramos 2 jornadas de usuário para 2 personas diferentes.
+Para esta etapa, utilizamos duas técnicas de elicitação de requisitos: **entrevista** e **jornada de usuário**. Na primeira técnica, utilizamos um roteiro para realizar 3 entrevistas com o público alvo do projeto. Na técnica seguinte, elaboramos 2 jornadas de usuário para 2 personas diferentes.
 
 ---
 
@@ -201,7 +201,6 @@ Para esta etapa, utilizamos duas técnicas de elicitação de requisitos: **entr
 
 # Jornada de Usuário
 
-
 ## Jornada de Usuário - 01
 
 ### Persona
@@ -209,6 +208,10 @@ Para esta etapa, utilizamos duas técnicas de elicitação de requisitos: **entr
 - **Nome:** Laís
 - **Idade:** 15 anos
 - **Nível de escolaridade:** 1º ano do ensino médio
+- **História:** Lais é uma aluna de classe média. É dedicada, frequenta uma escola particular e
+recebe uma bolsa de estudos devido ao seu bom desempenho nas matérias. Desde cedo, ela gosta de
+aprender coisas novas, mas suas atividades se limitam somente ao seu ambiente escolar. Sua escola
+é focada majoritariamente em promover o estudo para o vestibular
 
 ### Cenário
 
@@ -241,7 +244,7 @@ Lais tem o sonho de explorar suas habilidades acadêmicas, buscando oportunidade
 - **Nome:** Athur
 - **Idade:** 17 anos
 - **Nível de escolaridade:** 2º ano do ensino médio
-- **História:** 17 Anos. Está no 2º ano do EM. Vive em uma comunidade da Zona Oeste do Rio de Janeiro. Arthur não tem muitos incentivos de estudo na escola e busca atividades que possam lhe proporcionar oportunidades de ter uma vida melhor e ajudar sua família.
+- **História:** Arthur vive em uma comunidade da Zona Oeste do Rio de Janeiro. Arthur não tem muitos incentivos de estudo na escola e busca atividades que possam lhe proporcionar oportunidades de ter uma vida melhor e ajudar sua família.
 
 ### Cenário
 
@@ -265,5 +268,3 @@ Ouviu falar do oportuni em um post nas redes sociais. Se sente incomodado com as
 |                  | - Contar aos amigos das oportunidades que encontrou no site.                                                                        | - "Vou indicar para os meus amigos, esse site é legal"                                                        | - Empolgação                                                           |                                  |   Disponibilizar formas rápidas de compartilhamento dentro do próprio site                               |
 
 ---
-
-## Jornada de Usuário - 03
