@@ -237,4 +237,34 @@ Lais tem o sonho de explorar suas habilidades acadêmicas, buscando oportunidade
 
 ## Jornada de Usuário - 02
 
+### Persona
+
+- **Nome:** Athur
+- **Idade:** 17 anos
+- **Nível de escolaridade:** 2º ano do ensino médio
+- **História:** 
+
+### Cenário
+
+Ouviu falar do oportuni em uma palestra na escola. Se sente incomodado com as reprovações no colégio, e pensa em parar de estudar para conseguir um emprego logo. Tem medo de não encontrar oportunidades melhores na vida.
+
+### Objetivo
+
+- Encontrar atividades que desenvolvam habilidades úteis para o mercado de trabalho.
+- Incentivar seus amigos a participarem de atividades interessantes
+
+| **Fases**  | **Ação**                                                                       | **Pensamentos**                                                                                    | **Emoções**                                                    | **Pontos Críticos**                                                     | **Oportunidades e Ideias** |
+| ---------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------- |
+| **Antes**  | - Pesquisar sobre o Oportuni.                             | - "Esse site parece legal, vou ver como funciona"                       | - Curiosidade |                                                  | - A divulgação em redes sociais permite que uma maior porção do público alvo tenha contato com a ferramenta      |
+|                  | - Cria uma conta                                                              | - "Vou criar uma conta, mas dúvido que seja algo perto da onde eu moro"     |  Desconfiança                   |                                           |                                  |
+|                  |                                                                                        |                                                                                                          |                                                                        |                                                                                |                                  |
+|                  | - Filtrar as atividades por horário, habilidades desenvolvidas e localização                                            | - "Nossa, esses filtros são realmente práticos, seria complicado se fosse algo muito longe" | - Surpresa                                                          | - Os filtros não são maleáveis o suficiente. | Quando uma busca retornaria zero resultados, os limites podem ser relaxados, para que apresente respostas mais próximas ao resultado ótimo   |
+| **Durante**     | - Descobre oportunidades existentes na sua comunidade e região.                                 | - "Eu não sabia que existiam tantas atividades aqui perto! Acho que o pessoal vai se interessar"   | - Felicidade                                                           |       |   O algoritmo deve sugerir atividades relacionadas com a visualizada, mantendo restrições de localidade e público alvo.                               |
+|                  | - Encontra uma ONG que ofere aulas de reforço e de informática no contra-turno escolar.                                |         "Nossa! Essa atividade é exatamente o que eu queria, vai ajudar na escola e ainda facilitar pra arranjar um trabalho!"                                                                                                 | - Satisfação   |  Descrições confusas ou mal diagramadas podem atrapalhar a escolha de uma atividade                                                                              |                                  |
+|                  |                                                                                        |                                                                                                          |                                                                        |                                                                                |                                  |
+| **Depois** | - Se cadastra na atividade desejada. | - "Agora é só preencher esse cadastro aqui pra começar a atividade?"                                                                 | - Tranquilidade                                                         | - O cadastro deve ser simples e rápido, pois um formulário muito extenso pode afastar interessados.                                    | O cadastro pode ser facilitado pela própria plataforma      |
+|                  | - Contar aos amigos das oportunidades que encontrou no site.                                                                        | - "Vou indicar para os meus amigos, esse site é legal"                                                        | - Empolgação                                                           |                                  |   Disponibilizar formas rápidas de compartilhamento dentro do próprio site                               |
+
+---
+
 ## Jornada de Usuário - 03
