@@ -211,7 +211,7 @@ Para esta etapa, utilizamos duas técnicas de elicitação de requisitos: **entr
 - **História:** Lais é uma aluna de classe média. É dedicada, frequenta uma escola particular e
 recebe uma bolsa de estudos devido ao seu bom desempenho nas matérias. Desde cedo, ela gosta de
 aprender coisas novas, mas suas atividades se limitam somente ao seu ambiente escolar. Sua escola
-é focada majoritariamente em promover o estudo para o vestibular
+é focada majoritariamente em promover o estudo para o vestibular.
 
 ### Cenário
 
@@ -221,7 +221,6 @@ Lais tem o sonho de explorar suas habilidades acadêmicas, buscando oportunidade
 
 - Encontrar oportunidades acadêmicas.
 - Descobrir pré-requisitos e como se preparar.
-- Realizar seu sonho.
 
 | **Fases**  | **Ação**                                                                       | **Pensamentos**                                                                                    | **Emoções**                                                    | **Pontos Críticos**                                                     | **Oportunidades e Ideias** |
 | ---------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------- |
