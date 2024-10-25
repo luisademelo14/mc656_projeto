@@ -221,17 +221,72 @@ Lais tem o sonho de explorar suas habilidades acadêmicas, buscando oportunidade
 - Descobrir pré-requisitos e como se preparar.
 - Realizar seu sonho.
 
-| **Fases**  | **Ação**                                                                       | **Pensamentos**                                                                                    | **Emoções**                                                    | **Pontos Críticos**                                                     | **Oportunidades e Ideias** |
-| ---------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------- |
-| **Antes**  | - Procurar sites para encontrar oportunidades acadêmicas.                             | - "Vou finalmente buscar por oportunidades acadêmicas que fazem sentido pra mim!"                       | - Curiosidade e preocupação se irá encontrar algo que a satisfaça. | - Não conseguir se cadastrar.                                                 | Melhor indicação de sites      |
-|                  | - Fazer cadastro e login.                                                              | - "Colocar minhas informações deve ajudar a achar oportunidades voltadas para os meus interesses."     | - Animação para ver as oportunidades disponíveis.                   | - Não encontrar opção de interesse.                                         |                                  |
-|                  |                                                                                        |                                                                                                          |                                                                        |                                                                                |                                  |
-|                  | - Filtrar de acordo com suas preferências.                                            | - "Essas parecem interessantes, agora preciso escolher as que eu gostei mais e que eu possa participar." | - Expectativa                                                          | - Não conseguir usar o filtro para encontrar oportunidades para o seu perfil. | Disponibilizar guias de estudo   |
-| **Durante**     | - Escolher as oportunidades que mais combinam com ela.                                 | - "Essa oportunidade é perfeita para mim! Eu me encaixo nos requisitos e ela me parece interessante!"   | - Entusiasmo                                                           | - Dificuldade de encontrar uma oportunidade que combine com o seu perfil.      |                                  |
-|                  | - Verificar os pré-requisitos e formas de se preparar.                                |                                                                                                          | - Animação para se inscrever e começar a participar da atividade.   |                                                                                |                                  |
-|                  |                                                                                        |                                                                                                          |                                                                        |                                                                                |                                  |
-| **Depois** | - Se inscrever e começar a se preparar pra tirar o máximo da oportunidade escolhida. | - "Consegui encontrar uma oportunidade!"                                                                 | - Satisfação                                                         | - Dúvida se tem a preparação suficiente.                                    | Oferecer materiais de apoio      |
-|                  | - Sair do site.                                                                        | - "Estou gostando de participar dessa atividade!"                                                        | - Felicidade                                                           | - Não conseguir se inscrever na oportunidade.                                 |                                  |
+<table>
+  <tr style="background-color: #000000;">
+    <th>Fases</th>
+    <th>Ação</th>
+    <th>Pensamentos</th>
+    <th>Emoções</th>
+    <th>Pontos Críticos</th>
+    <th>Oportunidades e Ideias</th>
+  </tr>
+  <tr style="background-color: ;">
+    <td><strong>Antes</strong></td>
+    <td>- Procurar sites para encontrar oportunidades acadêmicas.</td>
+    <td>- "Vou finalmente buscar por oportunidades acadêmicas que fazem sentido pra mim!"</td>
+    <td>- Curiosidade e preocupação se irá encontrar algo que a satisfaça.</td>
+    <td>- Não conseguir se cadastrar.</td>
+    <td>Melhor indicação de sites</td>
+  </tr>
+  <tr style="background-color:;">
+    <td></td>
+    <td>- Fazer cadastro e login.</td>
+    <td>- "Colocar minhas informações deve ajudar a achar oportunidades voltadas para os meus interesses."</td>
+    <td>- Animação para ver as oportunidades disponíveis.</td>
+    <td>- Não encontrar opção de interesse.</td>
+    <td></td>
+  </tr>
+  <tr style="background-color: #272727;">
+    <td></td>
+    <td>- Filtrar de acordo com suas preferências.</td>
+    <td>- "Essas parecem interessantes, agora preciso escolher as que eu gostei mais e que eu possa participar."</td>
+    <td>- Expectativa</td>
+    <td>- Não conseguir usar o filtro para encontrar oportunidades para o seu perfil.</td>
+    <td>Disponibilizar guias de estudo</td>
+  </tr>
+  <tr style="background-color: #272727;">
+    <td><strong>Durante</strong></td>
+    <td>- Escolher as oportunidades que mais combinam com ela.</td>
+    <td>- "Essa oportunidade é perfeita para mim! Eu me encaixo nos requisitos e ela me parece interessante!"</td>
+    <td>- Entusiasmo</td>
+    <td>- Dificuldade de encontrar uma oportunidade que combine com o seu perfil.</td>
+    <td></td>
+  </tr>
+  <tr style="background-color: #272727;">
+    <td></td>
+    <td>- Verificar os pré-requisitos e formas de se preparar.</td>
+    <td></td>
+    <td>- Animação para se inscrever e começar a participar da atividade.</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr style="background-color:;">
+    <td><strong>Depois</strong></td>
+    <td>- Se inscrever e começar a se preparar pra tirar o máximo da oportunidade escolhida.</td>
+    <td>- "Consegui encontrar uma oportunidade!"</td>
+    <td>- Satisfação</td>
+    <td>- Dúvida se tem a preparação suficiente.</td>
+    <td>Oferecer materiais de apoio</td>
+  </tr>
+  <tr style="background-color:;">
+    <td></td>
+    <td>- Sair do site.</td>
+    <td>- "Estou gostando de participar dessa atividade!"</td>
+    <td>- Felicidade</td>
+    <td>- Não conseguir se inscrever na oportunidade.</td>
+    <td></td>
+  </tr>
+</table>
 
 ---
 
