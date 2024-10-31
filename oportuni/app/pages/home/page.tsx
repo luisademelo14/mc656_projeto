@@ -8,6 +8,9 @@ const Home = async () => {
   await dbConnect();
   const projects = await Project.find({}).lean();
 
+  // Verificar se os projetos foram encontrados
+  console.log("Projetos encontrados:", projects);
+
   return (
     <div className="flex flex-col justify-between min-h-screen w-full bg-white">
       <main className="flex-grow flex flex-col items-center justify-center space-y-8">
@@ -16,13 +19,29 @@ const Home = async () => {
         <div className="text-center">
           <h2 className="text-2xl font-semibold">Projetos</h2>
           <ul className="mt-4 space-y-4">
-            {projects.map((project) => (
-              <li key={project.id}>
-                <Link href={`/projects/${project.id}`}>
-                  {project.name} {/* Texto do link */}
-                </Link>
-              </li>
-            ))}
+            {projects.length === 0 ? (
+              <p>Nenhum projeto encontrado.</p> // Mensagem se não houver projetos
+            ) : (
+              projects.map((project) => {
+                // Adicionando log para verificar a URL da imagem
+                console.log("Nome do projeto:", project.name);
+                console.log("URL da imagem:", project.imageUrl);
+                console.log("Educacao:", project.educationLevel);
+
+                return (
+                  <li key={project.id} className="space-y-2">
+                    <Link href={`/projects/${project.id}`}>
+                      <img  
+                        src={project.imageUrl} 
+                        alt={project.name} 
+                        className="w-48 h-48 object-cover rounded-md" 
+                      />
+                      <span className="text-blue-500 hover:underline">{project.name}</span>
+                    </Link>
+                  </li>
+                );
+              })
+            )}
           </ul>
         </div>
       </main>
