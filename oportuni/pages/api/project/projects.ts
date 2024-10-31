@@ -8,41 +8,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  await dbConnect();
-  
-  const { email, projectId } = req.body;
-  
-  // verifica se os campos obrigatórios foram fornecidos
-  if (!email || !projectId) {
-    return res.status(400).json({ message: "Email e ID do projeto são necessários" });
+  const { action } = req.body;
+
+  // Verifica qual ação foi enviada e retorna a resposta correspondente
+  if (action === "subscribe") {
+    return res.status(200).json({ message: "Você será redirecionade para o site do projeto! Faça sua inscrição lá!" });
   }
 
-  // busca o projeto no banco de dados pelo ID
-  const project = await Project.findById(projectId);
-  
-  // verifica se o projeto existe
-  if (!project) {
-    return res.status(404).json({ message: "Projeto não existe" });
+  if (action === "shareExperience") {
+    return res.status(200).json({ message: "Redirecionando para seu perfil!" });
   }
-
-  // verifica a data de início do projeto
-  const currentDate = new Date();
-  const startDate = new Date(project.startDate);
-
-  if (currentDate > startDate) {
-    return res.status(403).json({ message: "Não é possível fazer inscrição" });
-  }
-
-  // busca o usuário pelo email
-  const user = await User.findOne({ email });
-  if (!user) {
-    return res.status(404).json({ message: "Usuário não encontrado" });
-  }
-
-  //registrar o usuário no projeto (exemplo simplificado)
-  // armazena as inscrições no banco de dados
-  project.participants.push(email);
-  await project.save();
-
-  return res.status(200).json({ message: "Inscrição realizada com sucesso" });
 }

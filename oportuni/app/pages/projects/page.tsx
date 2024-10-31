@@ -1,33 +1,20 @@
 "use client";
 import { useState } from "react";
 import { Box, Button, Chip } from "@mui/material";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import "../recovery/styles.css";
 
-interface Project {
-  id: number;
-  startDate: Date;
-  name: string;
-  description: string;
-  imageUrl: string;
-  participants: string[];
-  minAge: number;
-  category: string;
-  certification: "SIM" | "NÃO";
-  educationLevel: string;
-  friendParticipants: string[]; // Lista de amigos participando
-  topics: string[]; // Tópicos de aprendizado
-}
-
 const ProjectPage: React.FC = () => {
-  const [project] = useState<Project>({
+  const router = useRouter();
+  const [project] = useState({
     id: 1,
     startDate: new Date("2024-05-19"),
     name: "Simulações da ONU",
     description:
       "As Simulações da ONU são eventos acadêmicos que simulam as discussões e negociações das Nações Unidas.",
-    imageUrl: "/imagens/onu.jpg", // Substitua pela URL correta
-    participants: [],
+    imageUrl: "public/imagens/onu.png",
+    participants: ["Ana", "Flora", "Beatriz"],
     minAge: 13,
     category: "Simulações da ONU",
     certification: "SIM",
@@ -36,16 +23,34 @@ const ProjectPage: React.FC = () => {
     topics: ["Comunicação", "Geopolítica"],
   });
 
-  const handleSignup = () => {
-    alert("Inscrição realizada com sucesso!");
+  const handleButtonClick = async (action: string) => {
+    try {
+      const response = await fetch("/api/handler", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ action }),
+      });
+
+      const data = await response.json();
+
+      if (action === "subscribe") {
+        alert(data.message);
+      } else if (action === "shareExperience") {
+        router.push("/profile");
+      }
+    } catch (error) {
+      alert("Erro ao realizar a ação. Tente novamente.");
+    }
   };
 
   return (
     <Box
-      justifyContent={"center"}
+      justifyContent="center"
       display="flex"
       sx={{
-        backgroundImage: 'url(/imagens/fundo.jpg)', // Fundo personalizado
+        backgroundImage: 'url(public/imagens/fundo.jpg)',
         backgroundSize: 'auto',
         backgroundPosition: 'center',
         minHeight: '100vh',
@@ -61,9 +66,8 @@ const ProjectPage: React.FC = () => {
         display="grid"
         className="default-text"
         p={2}
-        sx={{ textAlign: 'center' }}
+        sx={{ textAlign: "center" }}
       >
-        {/* Imagem no topo */}
         <Box
           component="img"
           src={project.imageUrl}
@@ -71,7 +75,6 @@ const ProjectPage: React.FC = () => {
           sx={{ width: "100%", borderRadius: "8px", marginBottom: "16px" }}
         />
 
-        {/* Rótulo "Feito para você!" */}
         <Box
           sx={{
             backgroundColor: "#111",
@@ -86,7 +89,6 @@ const ProjectPage: React.FC = () => {
           Feito para você!
         </Box>
 
-        {/* Informações sobre inscrições */}
         <Box className="default-text bold-text large-text">
           <p>Inscrições até 10/05/2024</p>
           <p>
@@ -94,17 +96,15 @@ const ProjectPage: React.FC = () => {
           </p>
         </Box>
 
-        {/* Botão de inscrição */}
         <Button
           variant="contained"
           color="primary"
           sx={{ marginBottom: "16px" }}
-          onClick={handleSignup}
+          onClick={() => handleButtonClick("subscribe")}
         >
           Clique aqui para se inscrever
         </Button>
 
-        {/* Informações detalhadas sobre o projeto */}
         <Box sx={{ textAlign: "left", marginTop: "16px" }}>
           <p><strong>Categoria:</strong> {project.category}</p>
           <p><strong>Idade:</strong> {project.minAge} a 23 anos</p>
@@ -113,35 +113,28 @@ const ProjectPage: React.FC = () => {
           <p><strong>Amigos participando:</strong> {project.friendParticipants.join(", ")}</p>
         </Box>
 
-        {/* Tópicos que serão aprendidos */}
         <Box sx={{ marginBottom: "16px" }}>
           <strong>Você vai aprender</strong>
           <Box>
             {project.topics.map((topic, index) => (
-              <Chip
-                key={index}
-                label={topic}
-                sx={{ margin: "4px", fontSize: "14px" }}
-              />
+              <Chip key={index} label={topic} sx={{ margin: "4px", fontSize: "14px" }} />
             ))}
           </Box>
         </Box>
 
-        {/* Descrição do Projeto */}
         <Box sx={{ textAlign: "left" }}>
           <p><strong>Descrição do Projeto:</strong></p>
           <p>{project.description}</p>
         </Box>
 
-        {/* Botão para compartilhar */}
         <Button
           variant="outlined"
           sx={{ marginTop: "16px" }}
+          onClick={() => handleButtonClick("shareExperience")}
         >
           Compartilhar com amigos
         </Button>
 
-        {/* Link para voltar */}
         <Box className="default-text small-text underline-text center-text" marginTop={2}>
           <Link href="/">
             <h1>Voltar para a página inicial</h1>
