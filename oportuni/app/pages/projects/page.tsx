@@ -1,27 +1,40 @@
 "use client";
-import { useState } from "react";
-import { Box, Button, Chip } from "@mui/material";
-import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { Box, Button, Chip, CircularProgress } from "@mui/material";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import "../recovery/styles.css";
 
 const ProjectPage: React.FC = () => {
   const router = useRouter();
-  const [project] = useState({
-    id: 1,
-    startDate: new Date("2024-05-19"),
-    name: "Simulações da ONU",
-    description:
-      "As Simulações da ONU são eventos acadêmicos que simulam as discussões e negociações das Nações Unidas.",
-    imageUrl: "public/imagens/onu.png",
-    participants: ["Ana", "Flora", "Beatriz"],
-    minAge: 13,
-    category: "Simulações da ONU",
-    certification: "SIM",
-    educationLevel: "Ensino Médio",
-    friendParticipants: ["Beatriz"],
-    topics: ["Comunicação", "Geopolítica"],
-  });
+  const [project, setProject] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const { searchParams } = new URL(window.location.href);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      alert("Projeto não encontrado.");
+      setLoading(false);
+      return;
+    }
+
+    const fetchProject = async () => {
+      try {
+        const response = await fetch(`/api/project/${id}`);
+        if (!response.ok) throw new Error("Projeto não encontrado");
+
+        const data = await response.json();
+        setProject(data);
+      } catch (error) {
+        alert("Erro ao carregar o projeto.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProject();
+  }, []);
 
   const handleButtonClick = async (action: string) => {
     try {
@@ -45,13 +58,25 @@ const ProjectPage: React.FC = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (!project) {
+    return <p>Projeto não encontrado</p>;
+  }
+
   return (
     <Box
       justifyContent="center"
       display="flex"
       sx={{
-        backgroundImage: 'url(public/imagens/fundo.jpg)',
-        backgroundSize: 'auto',
+        backgroundImage: 'url(/public/imagens/fundo.jpg)',
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
         minHeight: '100vh',
         minWidth: '100vw',
@@ -92,7 +117,7 @@ const ProjectPage: React.FC = () => {
         <Box className="default-text bold-text large-text">
           <p>Inscrições até 10/05/2024</p>
           <p>
-            <strong>{project.startDate.toLocaleDateString("pt-BR")}</strong> - Online
+            <strong>{new Date(project.startDate).toLocaleDateString("pt-BR")}</strong> - Online
           </p>
         </Box>
 
@@ -116,7 +141,7 @@ const ProjectPage: React.FC = () => {
         <Box sx={{ marginBottom: "16px" }}>
           <strong>Você vai aprender</strong>
           <Box>
-            {project.topics.map((topic, index) => (
+            {project.topics.map((topic: string, index: number) => (
               <Chip key={index} label={topic} sx={{ margin: "4px", fontSize: "14px" }} />
             ))}
           </Box>
@@ -136,7 +161,7 @@ const ProjectPage: React.FC = () => {
         </Button>
 
         <Box className="default-text small-text underline-text center-text" marginTop={2}>
-          <Link href="/">
+          <Link href="../home">
             <h1>Voltar para a página inicial</h1>
           </Link>
         </Box>
