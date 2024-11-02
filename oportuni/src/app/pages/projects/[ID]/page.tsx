@@ -1,6 +1,6 @@
 // app/pages/projects/[id]/page.tsx
-import dbConnect from '@/lib/mongodb';
-import Project, { IProject } from '@/models/Project';
+import dbConnect from '@/src/lib/mongodb';
+import Project, { IProject } from '@/src/models/Project';
 import { notFound } from 'next/navigation';
 import { Box } from '@mui/material';
 import InteractiveButtons from './InteractiveButtons';

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import dbConnect from "@/lib/mongodb"; // ajuste o caminho conforme a estrutura de pastas
+import dbConnect from "@/src/lib/mongodb"; // ajuste o caminho conforme a estrutura de pastas
 import Project from "../../../models/Project"; // ajuste o caminho conforme a estrutura de pastas
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

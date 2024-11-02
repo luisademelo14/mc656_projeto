@@ -1,5 +1,5 @@
 "use client"
-import Footer from '@/components/Footer';
+import Footer from '@/src/components/Footer';
 
 const Community = () => {
   return (
