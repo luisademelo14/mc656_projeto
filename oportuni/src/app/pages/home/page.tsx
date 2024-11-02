@@ -1,7 +1,7 @@
-import Footer from '@/components/Footer';
+import Footer from '@/src/components/Footer';
 import Link from 'next/link';
-import dbConnect from '@/lib/mongodb';
-import Project from '@/models/Project';
+import dbConnect from '@/src/lib/mongodb';
+import Project from '@/src/models/Project';
 
 const Home = async () => {
   // Conectar ao MongoDB e buscar projetos
