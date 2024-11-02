@@ -21,19 +21,17 @@ const Perfil = () => {
     <div className="flex flex-col justify-between min-h-screen w-full bg-white">
       <div className="flex-grow flex flex-col items-center p-6">
         <div className="w-full max-w-3xl">
-          {/* Header ajustado com padding para evitar corte */}
-          <div className="header flex justify-between items-center w-full py-4">
-            <button className="voltar-button text-2xl">←</button>
+          {/* Header centralizado */}
+          <div className="header flex justify-center items-center w-full py-4">
             <h1 className="text-2xl font-semibold">Meu perfil</h1>
-            <button className="editar-button text-2xl">✎</button>
           </div>
 
           {/* Perfil Info */}
           <div className="perfil-info mt-6 text-center">
-            {/* Ajuste de tamanho da foto de perfil */}
-            <div className="perfil-foto mx-auto">
+            {/* Imagem de perfil centralizada */}
+            <div className="perfil-foto flex justify-center">
               <img 
-                src="/avatar.png" 
+                src="https://via.placeholder.com/150" 
                 alt="Avatar" 
                 className="w-32 h-32 rounded-full border-2 border-gray-300 object-cover" 
               />
