@@ -79,7 +79,6 @@ const Perfil = () => {
           </div>
         </div>
       </div>
-
       <Footer /> {/* Reusable Footer component */}
     </div>
   );
