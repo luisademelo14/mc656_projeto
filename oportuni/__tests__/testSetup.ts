@@ -4,8 +4,8 @@ const httpMocks = require('node-mocks-http');
 const User = require('@/src/models/User');
 const bcrypt = require('bcryptjs');
 
-jest.mock('@src/lib/mongodb');         // mocking the dbConnect function
-jest.mock('@src/models/User', () => {  // mocking the User model
+jest.mock('@/src/lib/mongodb');         // mocking the dbConnect function
+jest.mock('@/src/models/User', () => {  // mocking the User model
   const mockUser = jest.fn();
   return mockUser;
 });
