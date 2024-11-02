@@ -3,7 +3,7 @@ import {ObjectId} from "mongodb"; // ENTENDER SE TÁ CERTO
 
 // Definindo a interface para o Projeto
 export interface IProject extends Document {
-  id: number;                     // ID único do projeto
+  ID: number;                     // ID único do projeto
   startDate: Date;                // Data de início do projeto
   name: string;                   // Nome do projeto
   description: string;            // Descrição do projeto
@@ -20,7 +20,7 @@ export interface IProject extends Document {
 // Criando o esquema do Projeto
 const ProjectSchema: Schema<IProject> = new Schema({
   _id: {type: ObjectId, required: true, unique: true},
-  id: { type: Number, required: true, unique: true },   // ID do projeto, único e obrigatório
+  ID: { type: Number, required: true, unique: true },   // ID do projeto, único e obrigatório
   startDate: { type: Date, required: true },            // Data de início do projeto
   name: { type: String, required: true },               // Nome do projeto
   description: { type: String, required: true },        // Descrição do projeto
