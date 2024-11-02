@@ -29,8 +29,8 @@ const Home = async () => {
                 console.log("Educacao:", project.educationLevel);
 
                 return (
-                  <li key={project.id} className="space-y-2">
-                    <Link href={`/projects/${project.id}`}>
+                  <li key={project.ID} className="space-y-2">
+                    <Link href={`/pages/projects/${project.ID}`}>
                       <img  
                         src={project.imageUrl} 
                         alt={project.name} 
