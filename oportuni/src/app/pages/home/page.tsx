@@ -1,29 +1,30 @@
-// Importações dos componentes e bibliotecas necessárias
 import Header from '@/src/components/Header';
 import Footer from '@/src/components/Footer';
-import dbConnect from '@/src/lib/mongodb';
-import Project from '@/src/models/Project';
+import Project from '@/src/components/Project';
 import { MagnifyingGlassIcon, UsersIcon, UserIcon, ArrowUpIcon } from '@heroicons/react/24/solid';
-import Link from 'next/link';
 
 const Home = async () => {
-  // Conectar ao MongoDB e buscar projetos
-  await dbConnect();
-  const projects = await Project.find({}).lean();
-
+  
   return (
     <div className="flex flex-col min-h-screen w-full bg-[#FEFFF5]">
       {/* Header fixo no topo da página */}
       <Header />
 
+      {/* Seção principal com a imagem de fundo central */}
+      <section
+        className="relative flex justify-center items-center bg-cover bg-center h-[300px] md:h-[1100px]"
+        style={{
+          backgroundImage: "url('/imagens/oportuni.jpg')"
+        }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center p-4 md:p-10">
+          <h1 className="font-bold text-5xl text-white mt-8">Seja bem-vindo!</h1>
+        </div>
+      </section>
+
       {/* Conteúdo principal com padding para não sobrepor o Header */}
       <main className="flex-grow p-8 mt-20">
-        <section className="text-center mb-12">
-          <h1 className="text-5xl font-bold">Bem-vindo ao Oportuni!</h1>
-        </section>
-
         <div className="flex flex-col md:flex-row justify-center items-start space-x-10 mb-10">
-
           {/* Seção de Sobre Nós */}
           <section className="bg-[#031634] shadow-lg rounded-lg p-8 text-white flex-1 mb-10 h-[500px] overflow-hidden">
             <h2 className="text-3xl font-semibold text-center">Sobre Nós</h2>
@@ -74,33 +75,14 @@ const Home = async () => {
               </li>
             </ul>
           </section>
-
         </div>
 
         {/* Seção de Projetos */}
         <section className="mb-10">
-          <h2 className="text-3xl font-semibold text-center text-[#031634]">Nossos Projetos</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-            {projects.length === 0 ? (
-              <p className="text-center">Nenhum projeto encontrado.</p>
-            ) : (
-              projects.map((project) => (
-                <div key={project.ID} className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                  <Link href={`/pages/projects/${project.ID}`}>
-                    <img
-                      src={project.imageUrl}
-                      alt={project.name}
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="p-6 bg-[#031634] text-white">
-                      <h3 className="text-lg font-bold">{project.name}</h3>
-                      <p className="text-sm mt-2">{project.educationLevel}</p>
-                    </div>
-                  </Link>
-                </div>
-              ))
-            )}
-          </div>
+          <h2 className="text-3xl font-semibold text-center text-[#031634]">Projetos em Alta</h2>
+
+          {/* Renderiza o componente Projects */}
+          <Project />
         </section>
       </main>
 
