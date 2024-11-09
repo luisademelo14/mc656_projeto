@@ -14,7 +14,7 @@ describe('Login API', () => {
     });
     await login(req, res);
     expect(res._getStatusCode()).toBe(400);
-    expect(res._getJSONData()).toEqual({ message: 'Email and password are required' });
+    expect(res._getJSONData()).toEqual({ message: 'É necessário preencher os campos de email e senha' });
   });
 
   // 2
@@ -26,7 +26,7 @@ describe('Login API', () => {
     });
     await login(req, res);
     expect(res._getStatusCode()).toBe(401);
-    expect(res._getJSONData()).toEqual({ message: 'Invalid credentials' });
+    expect(res._getJSONData()).toEqual({ message: 'Credenciais inválidas' });
   });
 
   // 3
@@ -40,7 +40,7 @@ describe('Login API', () => {
     });
     await login(req, res);
     expect(res._getStatusCode()).toBe(402);
-    expect(res._getJSONData()).toEqual({ message: 'Invalid password' });
+    expect(res._getJSONData()).toEqual({ message: 'Senha inválida' });
   });
 
   // 4
@@ -54,7 +54,7 @@ describe('Login API', () => {
     });
     await login(req, res);
     expect(res._getStatusCode()).toBe(200);
-    expect(res._getJSONData()).toEqual({ message: 'Login successful' });
+    expect(res._getJSONData()).toEqual({ message: 'Login realizado com sucesso!' });
   });
 
 });

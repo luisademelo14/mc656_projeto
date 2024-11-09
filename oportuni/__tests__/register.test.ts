@@ -15,7 +15,7 @@ describe('Register API', () => {
     });
     await register(req, res);
     expect(res._getStatusCode()).toBe(400);
-    expect(res._getJSONData()).toEqual({ message: 'Email and password are required' });
+    expect(res._getJSONData()).toEqual({ message: 'É necessário preencher os campos de email e senha' });
   });
 
   // 2
@@ -29,7 +29,7 @@ describe('Register API', () => {
     });
     await register(req, res);
     expect(res._getStatusCode()).toBe(401);
-    expect(res._getJSONData()).toEqual({ message: 'User already exists' });
+    expect(res._getJSONData()).toEqual({ message: 'Usuário já cadastrado' });
   });
 
   // 3
@@ -47,7 +47,7 @@ describe('Register API', () => {
       age: 25,
     });
     expect(res._getStatusCode()).toBe(200);
-    expect(res._getJSONData()).toEqual({ message: 'Signup successful!' });
+    expect(res._getJSONData()).toEqual({ message: 'Cadastro realizado com sucesso!' });
   });
 
 });
