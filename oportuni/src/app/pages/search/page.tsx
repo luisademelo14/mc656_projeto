@@ -3,7 +3,6 @@ import Footer from '@/src/components/Footer';
 import Box from '@mui/material/Box';
 import React from 'react';
 import SearchBar from '@/src/components/SearchBar'; 
-import "./styles.css"
 
 const Search = () => {
   const [valorDaBusca, setValorDaBusca] = React.useState<string>("ç~");
