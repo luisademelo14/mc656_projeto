@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const key = field as keyof typeof userFields;
 
     if (userFields[key].required && !req.body[key]) {
-      return res.status(400).json({ message: `${key} is required` });
+      return res.status(400).json({ message: `É necessário preencher o campo de ${key}` });
     }
     userData[key] = req.body[key];
   }
