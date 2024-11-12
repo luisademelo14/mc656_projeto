@@ -3,7 +3,7 @@ import dbConnect from '@/src/lib/mongodb';
 import Project, { IProject } from '@/src/models/Project';
 import { notFound } from 'next/navigation';
 import { Box } from '@mui/material';
-import InteractiveButtons from './InteractiveButtons';
+import InteractiveButtons from '../buttons_logic/InteractiveButtons';
 
 interface ProjectPageProps {
   params: { ID: string };

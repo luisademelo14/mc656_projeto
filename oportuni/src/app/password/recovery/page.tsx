@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import AuthForm from "../../../components/AuthForm";
 import Box from '@mui/material/Box';
 import Link from 'next/link';
-import './styles.css';
+import '../text_config/styles.css';
 
 const Recovery: React.FC = () => {
     // Variáveis de estado

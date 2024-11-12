@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import AuthForm from "../../../components/AuthForm";
 import Link from "next/link";
 import { Box } from "@mui/material";
-import '../recovery/styles.css';
+import '../text_config/styles.css';
 import { useRouter } from "next/navigation"; // Import useRouter to handle navigation
 
 const Login: React.FC = () => {
