@@ -42,7 +42,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
   return (
     <Box>
       <form onSubmit={handleSubmit}>
-        <Box marginTop="9vh" bgcolor="#FEFFEE" borderRadius="38px" padding="16px">
+        <Box marginTop="2vh" bgcolor="#FEFFEE" borderRadius="38px" padding="16px">
         
           <Box display="flex" justifyContent="center" marginBottom="24px">
             <Typography variant="h2" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'black' }}>
@@ -66,7 +66,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
           {mode !== "Recovery" && (
             <Box display="flex" justifyContent="center" p={1}>
               <TextField
-                label="Password"
+                label="Senha"
                 type="password"
                 className="black-text"
                 variant="standard"
@@ -89,6 +89,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
                   InputLabelProps={{ shrink: true }}
                   value={birthDate}
                   onChange={(e) => setBirthDate(e.target.value)}
+                  required
                   fullWidth
                   margin="dense"
                 />
@@ -101,6 +102,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
                   variant="standard"
                   value={schoolName}
                   onChange={(e) => setSchoolName(e.target.value)}
+                  required
                   fullWidth
                   margin="dense"
                 />
@@ -113,6 +115,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
                   variant="standard"
                   value={educationLevel}
                   onChange={(e) => setEducationLevel(e.target.value)}
+                  required
                   fullWidth
                   margin="dense"
                 />
