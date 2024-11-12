@@ -1,0 +1,93 @@
+/* Texto */
+.red-text {
+    color: red;
+}
+
+.black-text {
+    color: black;
+}
+
+.green-text {
+    color: green;
+}
+
+.default-text {
+    color: #031634;
+}
+
+.yellow-text {
+    color: yellow;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.italic-text {
+    font-style: italic;
+}
+
+.underline-text {
+    text-decoration: underline;
+}
+
+.large-text {
+    font-size: 2em;
+}
+
+.small-text {
+    font-size: 0.5em;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.uppercase-text {
+    text-transform: uppercase;
+}
+
+.lowercase-text {
+    text-transform: lowercase;
+}
+
+.capitalize-text {
+    text-transform: capitalize;
+}
+
+/* Botões  */
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+p {
+    font-size: 2rem;
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    background-color: #036564;
+    color: white;
+    font-size: 1rem;
+    border-radius: 22px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+button.blue {
+    background-color: #3498db;
+}
+
+button.green {
+    background-color: #036564;
+}
+
+button.orange {
+    background-color: orangered;
+}
