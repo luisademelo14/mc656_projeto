@@ -5,11 +5,13 @@ import TextField from '@mui/material/TextField';
 import Typography from "@mui/material/Typography";
 import { userFields } from "@/src/models/userConfig";
 
+
 interface AuthFormProps {
   mode: "Signup" | "Login" | "Recovery";
-  onSubmit: (data: Record<string, string>) => void;
+  onSubmit: (data: { email: string; password?: string }) => void;
   resetForm?: boolean;
 }
+
 
 const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
   const [formData, setFormData] = useState<Record<string, string>>(
@@ -36,8 +38,13 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    onSubmit(formData);
+    // Converter `formData` para os tipos esperados pela função `onSubmit` de `Login`
+    const { email, password } = formData;
+    const formattedData = { email, password }; // Assume que `password` pode ser opcional
+    // Chama `onSubmit` com o formato esperado
+    onSubmit(formattedData as { email: string; password?: string });
   };
+  
 
   const fieldsToShow: Array<keyof typeof userFields> = 
     mode === "Login" ? ["email", "password"] :
