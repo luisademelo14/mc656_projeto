@@ -19,7 +19,6 @@ export interface IProject extends Document {
 
 // Criando o esquema do Projeto
 const ProjectSchema: Schema<IProject> = new Schema({
-  _id: {type: ObjectId, required: true, unique: true},
   ID: { type: Number, required: true, unique: true },   // ID do projeto, único e obrigatório
   startDate: { type: Date, required: true },            // Data de início do projeto
   name: { type: String, required: true },               // Nome do projeto

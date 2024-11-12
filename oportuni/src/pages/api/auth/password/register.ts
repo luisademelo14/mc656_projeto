@@ -9,15 +9,15 @@ export default async function handler(
   await dbConnect();
   const { email, password, age } = req.body;
   if (!email || !password) {
-    return res.status(400).json({ message: "Email and password are required" });
+    return res.status(400).json({ message: "É necessário preencher os campos de email e senha" });
   }
   const existingUser = await User.findOne({ email });
   if (existingUser) {
-    return res.status(401).json({ message: "User already exists" });
+    return res.status(401).json({ message: "Usuário já cadastrado" });
   }
   const hashedPassword = bcrypt.hashSync(password, 10);
   // const newUser = new User({ email, password: hashedPassword, age });
   const newUser = new User({ email, password, age });
   await newUser.save();
-  return res.status(200).json({ message: "Signup successful!" });
+  return res.status(200).json({ message: "Cadastro realizado com sucesso!" });
 }
