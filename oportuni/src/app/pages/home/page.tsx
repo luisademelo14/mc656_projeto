@@ -1,6 +1,6 @@
 import Header from '@/src/components/Header';
 import Footer from '@/src/components/Footer';
-import Project from '@/src/components/Project';
+import Projects from '@/src/components/ProjectList';
 import { MagnifyingGlassIcon, UsersIcon, UserIcon, ArrowUpIcon } from '@heroicons/react/24/solid';
 
 const Home = async () => {
@@ -82,7 +82,7 @@ const Home = async () => {
           <h2 className="text-3xl font-semibold text-center text-[#031634]">Projetos em Alta</h2>
 
           {/* Renderiza o componente Projects */}
-          <Project />
+          <Projects />
         </section>
       </main>
 
