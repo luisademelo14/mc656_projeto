@@ -3,10 +3,10 @@ import dbConnect from "@/src/lib/mongodb";
 import Project from "@/src/models/Project";
 
 // Função para buscar todos os projetos
-const getAllProjects = async () => {
+const getAllProjects = async (filter = {}) => {
   await dbConnect();
   try {
-    const projects = await Project.find({}).lean();
+    const projects = await Project.find(filter).lean();
     return projects;
   } catch (error) {
     console.error("Erro ao buscar projetos:", error);
@@ -28,31 +28,29 @@ const getProjectById = async (ID: Number) => {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { ID } = req.query; // Obtém o ID do projeto da URL (se houver)
+  const { ID, category } = req.query; // Obtém os parâmetros ID e category da URL (se houver)
 
   if (req.method === "GET") {
     try {
       if (ID) {
-        // Se houver um ID na URL, busca o projeto específico
+        // Se houver um ID, busca o projeto específico
         const project = await getProjectById(Number(ID));
-
         if (!project) {
           return res.status(404).json({ message: "Projeto não encontrado" });
         }
-
-        return res.status(200).json(project); // Retorna o projeto específico
+        return res.status(200).json(project);
       } else {
-        // Caso contrário, busca todos os projetos
-        const projects = await getAllProjects();
-        return res.status(200).json(projects); // Retorna todos os projetos
+        // Caso contrário, busca todos os projetos com filtro opcional de categoria
+        const filter = category ? { category: { $regex: category, $options: "i" } } : {};
+        const projects = await getAllProjects(filter);
+        return res.status(200).json(projects);
       }
     } catch (error) {
       console.error("Erro ao buscar projetos:", error);
-      res.status(500).json({ message: "Erro ao buscar os projetos" });
+      res.status(500).json({ message: "Erro ao buscar os projetos", error });
     }
   } else if (req.method === "POST") {
     const { action } = req.body;
-
     if (action === "subscribe") {
       return res.status(200).json({
         message: "Você será redirecionade para o site do projeto! Faça sua inscrição lá!",
