@@ -48,25 +48,42 @@ Como funciona e justificativa:
 
 *Diagrama de Componentes (C4 - Nível 3)*
 
-O diagrama em nível de componentes pode ser acessado a partir deste link: 
+Diagrama em nível de componentes:
+![Diagrama de Componentes](C4_Diagram.png)
 
 Abaixo seguem as descrições dos principais componentes e suas responsabilidades:
-    Componente de Banco de Dados (Model)
-        Responsabilidade: Armazenar todos os projetos e dados dos usuários. Ele é responsável por fornecer acesso aos dados por meio de consultas e atualizações.
-        Tecnologias: Banco de dados relacional (ex. PostgreSQL) ou NoSQL (ex. MongoDB), dependendo das necessidades de escalabilidade.
-
-    Componente de Lógica de Negócios (Model)
-        Responsabilidade: Implementar as regras de negócio para gerenciamento de projetos, perfis de usuários e inscrições em projetos.
-        Tecnologias: Node.js ou Next.js para a implementação de lógica do servidor.
-
-    Componente de Interface do Usuário (View)
+    Interface do Usuário
         Responsabilidade: Renderizar as páginas da aplicação, incluindo a listagem de projetos, a página de pesquisa com filtros, a página de comunidade e a página de perfil do usuário.
-        Tecnologias: React, integrado ao Next.js, utilizando Tailwind CSS e Daisy UI para estilização.
+        Tecnologias: React, Next.js, Tailwind CSS, Daisy UI
 
-    Componente de Controle (Controller)
-        Responsabilidade: Gerenciar as interações do usuário, coordenando solicitações da View para o Model e enviando respostas de volta à View.
-        Tecnologias: Implementado como middlewares e controladores no Next.js.
-
-    Componente de Autenticação e Autorização
+    Componente de Controle de Acesso
         Responsabilidade: Controlar o acesso dos usuários às funcionalidades do sistema e garantir que somente usuários autenticados possam acessar recursos restritos.
-        Tecnologias: NextAuth.js ou outra solução de autenticação segura.
+        Tecnologias: NextAuth.js
+
+    Componente de Controle de Registro
+        Responsabilidade: Fazer o registro dos novos usuários no banco de dados.
+        Tecnologias: NextAuth.js
+
+    Componente de Controle de Recuperação
+        Responsabilidade: Gerencia o sistema de recuperação de senha do usuário.
+        Tecnologias: NextAuth.js
+
+    Componente de Gerenciador de Perfis
+        Responsabilidade: Gerencia a atualização e acesso às informações nos perfis dos usuários.
+        Tecnologias: Node.js, Next.js
+
+    Componente de Pesquisa
+        Responsabilidade: Realiza a busca dos projetos coerentes com os filtros do usuário.
+        Tecnologias: Node.js, Next.js
+
+    Componente de Gerenciador de Participantes
+        Responsabilidade: Controla a lista de usuários interessados/participantes dos projetos.
+        Tecnologias: Node.js, Next.js
+
+    Componente de Banco de Usuários
+        Responsabilidade: Armazena os dados dos usuários, tais como insformações de perfil e de acesso.
+        Tecnologias: MongoDB
+
+    Componente de Banco de Projetos
+        Responsabilidade: Armazena os dados dos projetos, detalhes, imagens, lista de participantes e outras informações relevantes.
+        Tecnologias: MongoDB
