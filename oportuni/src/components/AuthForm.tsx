@@ -7,46 +7,50 @@ import Typography from "@mui/material/Typography";
 
 interface AuthFormProps {
   mode: "Signup" | "Login" | "Recovery";
-  onSubmit: (data: { email: string; password?: string; age?: string }) => void;
+  onSubmit: (data: { email: string; password?: string; birthDate?: string; schoolName?: string; educationLevel?: string }) => void;
   resetForm?: boolean;
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [age, setAge] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [schoolName, setSchoolName] = useState("");
+  const [educationLevel, setEducationLevel] = useState("");
 
   useEffect(() => {
     if (resetForm) {
       setEmail("");
       setPassword("");
-      setAge(""); // Reseta o campo idade também
+      setBirthDate("");
+      setSchoolName("");
+      setEducationLevel("");
     }
   }, [resetForm]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (mode === "Signup") {
-      onSubmit({ email, password, age }); // Envia idade no Signup
+      onSubmit({ email, password, birthDate, schoolName, educationLevel });
     } else if (mode === "Login") {
-      onSubmit({ email, password }); // Somente email e senha no Login
+      onSubmit({ email, password });
     } else {
-      onSubmit({ email }); // Somente email na recuperação
+      onSubmit({ email });
     }
   };
 
   return (
     <Box>
       <form onSubmit={handleSubmit}>
-        <Box marginTop="9vh" bgcolor="#FEFFEE" borderRadius="38px">
+        <Box marginTop="9vh" bgcolor="#FEFFEE" borderRadius="38px" padding="16px">
         
-        <Box display="flex" justifyContent="center">
-          <Typography variant="h2" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'black' }}>
-            Oportuni
-          </Typography>
-        </Box>
+          <Box display="flex" justifyContent="center" marginBottom="24px">
+            <Typography variant="h2" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'black' }}>
+              Oportuni
+            </Typography>
+          </Box>
 
-          <Box justifyContent="center" display="flex" className="default-text body" p={2}>
+          <Box display="flex" justifyContent="center" p={1}>
             <TextField
               label="Email"
               type="email"
@@ -56,11 +60,11 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
               onChange={(e) => setEmail(e.target.value)}
               required
               fullWidth
-              margin="normal"
+              margin="dense"
             />
           </Box>
           {mode !== "Recovery" && (
-            <Box justifyContent="center" display="flex" className="default-text body" p={2}>
+            <Box display="flex" justifyContent="center" p={1}>
               <TextField
                 label="Password"
                 type="password"
@@ -70,25 +74,52 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 fullWidth
-                margin="normal"
+                margin="dense"
               />
             </Box>
           )}
           {mode === "Signup" && (
-            <Box justifyContent="center" display="flex" className="default-text body" p={2}>
-              <TextField
-                label="Age"
-                type="text"
-                className="black-text"
-                variant="standard"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-                fullWidth
-                margin="normal"
-              />
-            </Box>
+            <>
+              <Box display="flex" justifyContent="center" p={1}>
+                <TextField
+                  label="Data de Nascimento"
+                  type="date"
+                  className="black-text"
+                  variant="standard"
+                  InputLabelProps={{ shrink: true }}
+                  value={birthDate}
+                  onChange={(e) => setBirthDate(e.target.value)}
+                  fullWidth
+                  margin="dense"
+                />
+              </Box>
+              <Box display="flex" justifyContent="center" p={1}>
+                <TextField
+                  label="Nome da Escola"
+                  type="text"
+                  className="black-text"
+                  variant="standard"
+                  value={schoolName}
+                  onChange={(e) => setSchoolName(e.target.value)}
+                  fullWidth
+                  margin="dense"
+                />
+              </Box>
+              <Box display="flex" justifyContent="center" p={1}>
+                <TextField
+                  label="Escolaridade"
+                  type="text"
+                  className="black-text"
+                  variant="standard"
+                  value={educationLevel}
+                  onChange={(e) => setEducationLevel(e.target.value)}
+                  fullWidth
+                  margin="dense"
+                />
+              </Box>
+            </>
           )}
-          <Box display="flex" justifyContent="center" className="button" p={1}>
+          <Box display="flex" justifyContent="center" className="button" p={1} marginTop="16px">
             <button
               type="submit"
               className="button"
