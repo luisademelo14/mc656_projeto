@@ -1,17 +1,18 @@
+// src/models/User.ts
 import mongoose, { Document, Model, Schema } from "mongoose";
+import { userFields, UserFields } from "@/src/models/userConfig";
 
-export interface IUser extends Document {
-  email: string;
-  password: string;
-  age: string;
-}
+// Define the IUser interface that extends Mongoose's Document and uses the UserFields type
+export interface IUser extends Document, UserFields {}
 
-const UserSchema: Schema<IUser> = new Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  age: { type: String, required: true }
-});
+// Dynamically build the schema definition from userFields
+const schemaDefinition: Record<keyof UserFields, any> = Object.keys(userFields).reduce((acc, field) => {
+  const key = field as keyof typeof userFields;
+  acc[key] = { type: String, required: userFields[key].required };
+  return acc;
+}, {} as Record<keyof UserFields, any>);
 
-const User: Model<IUser> =
-  mongoose.models.User || mongoose.model("User", UserSchema);
+const UserSchema: Schema<IUser> = new Schema(schemaDefinition);
+
+const User: Model<IUser> = mongoose.models.User || mongoose.model<IUser>("User", UserSchema);
 export default User;
