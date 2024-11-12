@@ -1,7 +1,6 @@
-// app/pages/projects/[id]/page.tsx
-import dbConnect from '@/src/lib/mongodb';
-import Project, { IProject } from '@/src/models/Project';
-import { notFound } from 'next/navigation';
+"use client";
+import React, { useEffect, useState } from 'react';
+import { IProject } from '@/src/models/Project';
 import { Box } from '@mui/material';
 import InteractiveButtons from './InteractiveButtons';
 
@@ -9,16 +8,39 @@ interface ProjectPageProps {
   params: { ID: string };
 }
 
-const ProjectPage = async ({ params }: ProjectPageProps) => {
+const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const { ID } = params;
+  const [project, setProject] = useState<IProject | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  await dbConnect();
-  const project: IProject | null = await Project.findOne({ ID: Number(ID) }).lean();
+  useEffect(() => {
+    const fetchProject = async () => {
+      try {
+        const response = await fetch(`/api/project/projects?ID=${ID}`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
 
-  if (!project) {
-    console.log('Projeto não encontrado');
-    notFound(); // Redireciona para uma página 404 se o projeto não for encontrado
-  }
+        if (!response.ok) {
+          throw new Error("Projeto não encontrado");
+        }
+
+        const data = await response.json();
+        setProject(data);
+        setLoading(false);
+      } catch (err) {
+        console.error("Erro ao carregar o projeto:", err);
+        setError("Falha ao carregar o projeto.");
+        setLoading(false);
+      }
+    };
+
+    fetchProject();
+  }, [ID]);
+
+  if (loading) return <p>Carregando...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <Box
@@ -29,20 +51,20 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
       p={6}
       sx={{ backgroundColor: 'gray.100' }}
     >
-      <h1 className="text-3xl font-bold mb-4">{project.name}</h1>
+      <h1 className="text-3xl font-bold mb-4">{project?.name}</h1>
       <img 
-        src={project.imageUrl} 
-        alt={project.name} 
+        src={project?.imageUrl} 
+        alt={project?.name} 
         className="w-64 h-64 object-cover rounded-md mb-4" 
       />
-      <p className="text-lg text-gray-700">{project.description}</p>
+      <p className="text-lg text-gray-700">{project?.description}</p>
       <Box mt={4}>
-        <p><strong>Data de Início:</strong> {new Date(project.startDate).toLocaleDateString()}</p>
-        <p><strong>Idade Mínima:</strong> {project.minAge}</p>
-        <p><strong>Categoria:</strong> {project.category}</p>
-        <p><strong>Certificação:</strong> {project.certification}</p>
-        <p><strong>Nível Educacional:</strong> {project.educationLevel}</p>
-        <p><strong>Tópicos:</strong> {project.topics.join(', ')}</p>
+        <p><strong>Data de Início:</strong> {project?.startDate ? new Date(project.startDate).toLocaleDateString() : 'N/A'}</p>
+        <p><strong>Idade Mínima:</strong> {project?.minAge}</p>
+        <p><strong>Categoria:</strong> {project?.category}</p>
+        <p><strong>Certificação:</strong> {project?.certification}</p>
+        <p><strong>Nível Educacional:</strong> {project?.educationLevel}</p>
+        <p><strong>Tópicos:</strong> {project?.topics.join(', ')}</p>
       </Box>
 
       {/* Botões interativos */}
