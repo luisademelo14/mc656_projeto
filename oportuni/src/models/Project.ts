@@ -1,5 +1,4 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
-import {ObjectId} from "mongodb"; // ENTENDER SE TÁ CERTO
 
 // Definindo a interface para o Projeto
 export interface IProject extends Document {
