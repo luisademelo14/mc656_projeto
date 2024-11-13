@@ -25,13 +25,13 @@ const Perfil = () => {
           <div className="header flex justify-center items-center w-full py-4">
             <h1 className="text-2xl font-semibold">Meu perfil</h1>
           </div>
-
+ 
           {/* Perfil Info */}
           <div className="perfil-info mt-6 text-center">
             {/* Imagem de perfil centralizada */}
             <div className="perfil-foto flex justify-center">
               <img 
-                src="https://via.placeholder.com/150" 
+                src="https://randomuser.me/api/portraits/men/19.jpg" 
                 alt="Avatar" 
                 className="w-32 h-32 rounded-full border-2 border-gray-300 object-cover" 
               />
