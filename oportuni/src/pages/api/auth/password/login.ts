@@ -9,16 +9,16 @@ export default async function handler(
   await dbConnect();
   const { email, password } = req.body;
   if (!email || !password) {
-    return res.status(400).json({ message: "Email and password are required" });
+    return res.status(400).json({ message: "É necessário preencher os campos de email e senha" });
   }
   const user = await User.findOne({ email });
   if (!user) {
-    return res.status(401).json({ message: "Invalid credentials" });
+    return res.status(401).json({ message: "Credenciais inválidas" });
   }
   // const isValidPassword = bcrypt.compareSync(password, user.password);
   const isValidPassword = (password == user.password);
   if (!isValidPassword) {
-    return res.status(402).json({ message: "Invalid password" });
+    return res.status(402).json({ message: "Senha inválida" });
   }
-  return res.status(200).json({ message: "Login successful" });
+  return res.status(200).json({ message: "Login realizado com sucesso!" });
 }

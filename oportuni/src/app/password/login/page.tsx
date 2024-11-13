@@ -37,46 +37,46 @@ const Login: React.FC = () => {
   };
 
   return (
-    <Box 
-      justifyContent={'center'}
+    <Box
+      alignItems={'center'}     // Center vertically
+      justifyContent={'center'} // Center horizontally
       display="flex"
       sx={{
         backgroundImage: 'url(/imagens/fundo.jpg)',
-        backgroundSize: 'auto',
+        backgroundSize: 'cover', // Melhor para imagem de fundo
         backgroundPosition: 'center',
         minHeight: '100vh',
-        minWidth: '100vw',
+        width: '100vw', // Garantir que a largura da página seja 100% da tela
+        flexDirection: 'column', // Alinhar os elementos em coluna
+        overflow: 'auto', // Evitar overflow de conteúdo
       }}
-      >
-      <Box 
-        marginTop="10vh" 
-        bgcolor="#FEFFEE" 
+    >
+      <Box
+        bgcolor="#FEFFEE"
         borderRadius="16px"
-        maxWidth={'400px'}
-        width={'100%'}
-        maxHeight={'70vh'}  
-        display="grid"  
-        className="default-text bold-text large-text"  
+        maxWidth="400px"
+        width="100%"
+        maxHeight="100vh"
+        display="grid"
+        className="default-text bold-text large-text"
         p={2}
-        >
+      >
         {isSuccessful ? (
-          <p>
-            Welcome!
-          </p>
+          <Box display="flex" justifyContent="center" alignItems="center">
+            <p>Bem-vindo!</p>
+          </Box>
         ) : (
           <Box className="default-text">
             <AuthForm mode="Login" onSubmit={handleLogin} />
             <br />
-            <Box 
-              className= "default-text small-text underline-text center-text" 
-            >
+            <Box className="default-text small-text center-text">
               <Link href="/password/recovery">
-                <h1>
+                <h1 style={{ color: '#036564', marginBottom: '8px' }}>
                   Esqueci a senha
                 </h1>
               </Link>
               <Link href="/password/signup">
-                <h1>
+                <h1 style={{ color: '#036564', marginBottom: '8px' }}>
                   É meu primeiro acesso
                 </h1>
               </Link>

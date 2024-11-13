@@ -4,11 +4,12 @@ import { Box, Button, Typography } from '@mui/material'; // Se você estiver usa
 export default function Welcome() {
   return (
     <Box 
-      justifyContent={'center'}
+      alignItems="center" // Centraliza verticalmente
+      justifyContent="center" // Centraliza horizontalmente
       display="flex"
       sx={{
         backgroundImage: 'url(/imagens/fundo.jpg)',
-        backgroundSize: 'auto',
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
         minHeight: '100vh',
         minWidth: '100vw',

@@ -5,12 +5,12 @@ import Link from "next/link";
 import Box from "@mui/material/Box";
 import React from "react";
 
-
 const Signup: React.FC = () => {
   const [message, setMessage] = useState("");
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const handleSignup = async (data: { email: string, password?: string }) => {
+
+  const handleSignup = async (data: { name: string; email: string; password?: string; nivelescolar?: string; birthdate?: string }) => {
     const res = await fetch("/api/auth/password/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -25,57 +25,54 @@ const Signup: React.FC = () => {
       setIsSuccess(false);
     }
   };
+
   return (
-    <Box 
+    <Box
+      alignItems="center"
       justifyContent="center"
       display="flex"
       sx={{
         backgroundImage: 'url(/imagens/fundo.jpg)',
-        backgroundSize: 'auto',
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
         minHeight: '100vh',
-        minWidth: '100vw',
-        padding: 2,
+        width: '100vw',
+        flexDirection: 'column',
+        overflow: 'auto',
       }}
     >
-      <Box 
-        bgcolor="#FEFFEE" 
+      <Box
+        bgcolor="#FEFFEE"
         borderRadius="16px"
-        maxWidth={'400px'}
-        width={'100%'}
-        maxHeight="80vh"
+        maxWidth="400px"
+        width="100%"
+        maxHeight="100vh"
         display="grid"
         className="default-text bold-text large-text"
-        p = {2}
+        p={2}
       >
         {isSuccessful ? (
-          <p 
-            className="text-green-500 text-center"
-            style={{ fontSize: '14px', fontWeight: 'bold' }}  // Ajuste do tamanho da fonte
-          >
-            Welcome!
-          </p>
+          <Box display="flex" justifyContent="center" alignItems="center">
+            <p>Bem-vindo!</p>
+          </Box>
         ) : (
           <>
-            <AuthForm 
-              mode="Signup" 
-              onSubmit={handleSignup}
-            />
-  
+            <AuthForm mode="Signup" onSubmit={handleSignup} />
             {message && (
               <p
                 className={`text-center mt-4 ${
-                  isSuccess ? "text-red-500" : "text-green-800" 
+                  isSuccess ? "text-green-800" : "text-red-500"
                 }`}
-                style={{ fontSize: '20px' }}  // Ajuste de fonte na mensagem de sucesso ou erro
+                style={{ fontSize: '20px' }}
               >
                 {message}
               </p>
             )}
-  
-            <Box className="default-text small-text underline-text center-text" marginTop="20px">
+            <Box className="default-text small-text center-text" marginTop="20px">
               <Link href="/password/login">
-                <h1>Voltar para Login</h1>
+                <h1 style={{ color: '#036564', marginBottom: '8px' }}>
+                  Voltar para Login
+                </h1>
               </Link>
             </Box>
           </>
@@ -83,6 +80,6 @@ const Signup: React.FC = () => {
       </Box>
     </Box>
   );
-  
-}
+};
+
 export default Signup;
