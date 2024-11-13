@@ -6,7 +6,6 @@ export const userFields = {
   password: { type: "string", required: true, label: "Senha" },
   nivelescolar: { type: "string", required: true, label: "Nível de Escolaridade" },
   birthdate: { type: "string", required: true, label: "Data de Nascimento" },
-  // Add more fields as needed
 };
 
 // Create a TypeScript type from the configuration

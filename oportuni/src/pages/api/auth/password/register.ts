@@ -26,9 +26,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   // Hash password if it exists
-  if (userData.password) {
-    userData.password = bcrypt.hashSync(userData.password, 10);
-  }
+  // if (userData.password) {
+  //   userData.password = bcrypt.hashSync(userData.password, 10);
+  // }
 
   const newUser = new User(userData);
   await newUser.save();

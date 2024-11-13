@@ -5,13 +5,11 @@ import TextField from '@mui/material/TextField';
 import Typography from "@mui/material/Typography";
 import { userFields } from "@/src/models/userConfig";
 
-
 interface AuthFormProps {
   mode: "Signup" | "Login" | "Recovery";
-  onSubmit: (data: { email: string; password?: string }) => void;
+  onSubmit: (data: { name: string; email: string; password?: string; nivelescolar?: string; birthdate?: string }) => void;
   resetForm?: boolean;
 }
-
 
 const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
   const [formData, setFormData] = useState<Record<string, string>>(
@@ -38,13 +36,16 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // Converter `formData` para os tipos esperados pela função `onSubmit` de `Login`
-    const { email, password } = formData;
-    const formattedData = { email, password }; // Assume que `password` pode ser opcional
-    // Chama `onSubmit` com o formato esperado
-    onSubmit(formattedData as { email: string; password?: string });
+
+    // Garantir que o formData tem as propriedades name, email, password, nivelescolar e birthdate
+    const { name, email, password, nivelescolar, birthdate } = formData;
+
+    // Verifique se 'nivelescolar' está realmente sendo preenchido
+    console.log('FormData:', formData); // Verifique os dados no console
+
+    // Passa os dados no formato correto para onSubmit
+    onSubmit({ name, email, password, nivelescolar, birthdate });
   };
-  
 
   const fieldsToShow: Array<keyof typeof userFields> = 
     mode === "Login" ? ["email", "password"] :
@@ -64,8 +65,8 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
           {fieldsToShow.map((field) => (
             <Box key={field} justifyContent="center" display="flex" className="default-text body" p={2}>
               <TextField
-                label={userFields[field].label} // Access label from userFields
-                type={field === "password" ? "password" : "text"}
+                label={userFields[field].label}
+                type={field === "password" ? "password" : field === "birthdate" ? "text" : "text"} // Alterado para 'text'
                 className="black-text"
                 variant="standard"
                 value={formData[field]}
@@ -73,6 +74,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onSubmit, resetForm }) => {
                 required={userFields[field].required}
                 fullWidth
                 margin="normal"
+                InputLabelProps={field === "birthdate" ? { shrink: true } : {}}
               />
             </Box>
           ))}

@@ -10,7 +10,7 @@ const Signup: React.FC = () => {
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSignup = async (data: { email: string, password?: string }) => {
+  const handleSignup = async (data: { name: string; email: string; password?: string; nivelescolar?: string; birthdate?: string }) => {
     const res = await fetch("/api/auth/password/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
