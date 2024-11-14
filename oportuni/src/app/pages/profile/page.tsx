@@ -1,6 +1,6 @@
 "use client"
-import Footer from '@/src/components/Footer';
 import React from 'react';
+import Header from '@/src/components/Header'; // Importa o Header
 
 const Perfil = () => {
   const usuario = {
@@ -19,9 +19,14 @@ const Perfil = () => {
 
   return (
     <div className="flex flex-col justify-between min-h-screen w-full bg-white">
-      <div className="flex-grow flex flex-col items-center p-6">
+      {/* Header fixo no topo */}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Header />
+      </div>
+
+      <div className="mt-20 flex-grow flex flex-col items-center p-6">
         <div className="w-full max-w-3xl">
-          {/* Header centralizado */}
+          {/* Título do perfil centralizado */}
           <div className="header flex justify-center items-center w-full py-4">
             <h1 className="text-2xl font-semibold">Meu perfil</h1>
           </div>
@@ -79,7 +84,6 @@ const Perfil = () => {
           </div>
         </div>
       </div>
-      <Footer /> {/* Reusable Footer component */}
     </div>
   );
 };

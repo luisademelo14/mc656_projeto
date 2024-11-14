@@ -1,7 +1,7 @@
 "use client";
-import Footer from "@/src/components/Footer"; // Importando o Footer
+import Header from "@/src/components/Header"; // Importa o Header
 
-// Dois posts aleatórios
+// posts aleatórios
 const randomPosts = [
   {
     id: "1",
@@ -66,26 +66,30 @@ const randomPosts = [
     content: "Vai corinthians!!!!.",
     timestamp: new Date().toLocaleString(),
   },
-  // Você pode adicionar mais mensagens aqui...
 ];
 
 const Community = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Conteúdo geral da página */}
-      <main className="flex-grow flex flex-col items-center"> {/* Adicionando items-center para centralizar */}
+      {/* Header fixo no topo */}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Header />
+      </div>
+
+      {/* Conteúdo geral da página com margem superior para o header fixo */}
+      <main className="mt-20 flex-grow flex flex-col items-center">
         <div className="flex flex-col items-center justify-start py-10 px-4">
           {/* Mensagem de boas-vindas */}
           <h1 className="text-4xl font-bold">Comunidade</h1>
         </div>
 
-        {/* Seção do feed com um scroller específico para as mensagens */}
-        <div className="feed flex-grow max-w-1xl w-full h-96 overflow-y-auto space-y-4 border border-gray-200 rounded-lg p-4 mb-20 flex flex-col items-center"> {/* Adicionando flex e items-center */}
+        {/* Seção do feed com rolagem específica para as mensagens */}
+        <div className="feed flex-grow max-w-1xl w-full h-96 overflow-y-auto space-y-4 border border-gray-200 rounded-lg p-4 mb-20 flex flex-col items-center">
           {randomPosts.map((post) => (
             <div key={post.id} className="post flex items-start w-full p-4 border border-gray-200 rounded-lg">
               <img src={post.avatar} alt={post.username} className="avatar w-12 h-12 rounded-full mr-4" />
               <div className="content flex-1">
-                <div className="header flex justify-between i tems-center">
+                <div className="header flex justify-between items-center">
                   <strong className="text-lg">{post.username}</strong>
                   <span className="text-sm text-gray-500">{post.timestamp}</span>
                 </div>
@@ -95,9 +99,6 @@ const Community = () => {
           ))}
         </div>
       </main>
-
-      {/* Footer fixo */}
-      <Footer />
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import Header from '@/src/components/Header';
-import Footer from '@/src/components/Footer';
 import Projects from '@/src/components/ProjectList';
 import { MagnifyingGlassIcon, UsersIcon, UserIcon, ArrowUpIcon } from '@heroicons/react/24/solid';
 
@@ -85,9 +84,6 @@ const Home = async () => {
           <Projects />
         </section>
       </main>
-
-      {/* Footer fixo no rodapé da página */}
-      {/* <Footer /> */}
     </div>
   );
 };
