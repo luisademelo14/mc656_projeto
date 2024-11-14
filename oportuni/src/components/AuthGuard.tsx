@@ -1,4 +1,3 @@
-// components/AuthGuard.tsx
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -13,18 +12,18 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Check if the user is authenticated from UserSession
-    const session = UserSession.getInstance();
-    const authStatus = session.isUserAuthenticated();
-    setIsAuthenticated(authStatus);
+    if (typeof window !== "undefined") { // Ensure this code runs on the client side
+      const session = UserSession.getInstance();
+      const authStatus = session.isUserAuthenticated();
+      setIsAuthenticated(authStatus);
 
-    // Redirect to login if not authenticated
-    if (!authStatus) {
-      router.push("/password/login");
+      if (!authStatus) {
+        router.push("/password/login");
+      }
     }
   }, [router]);
 
-  // Render children if authenticated; otherwise, redirecting will occur
+  // Only render children if authenticated (client-side)
   return <>{isAuthenticated && children}</>;
 };
 

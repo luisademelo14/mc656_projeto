@@ -1,4 +1,3 @@
-// loginpage.tsx
 "use client";
 import { useState, useEffect } from "react";
 import AuthForm from "../../../components/AuthForm";
@@ -14,10 +13,19 @@ const Login: React.FC = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (isSuccess && UserSession.getInstance().isUserAuthenticated()) {
-      router.push("/pages/home");
+    if (typeof window !== "undefined") { // Check if running on the client side
+      if (UserSession.getInstance().isUserAuthenticated()) {
+        router.push("/pages/home");
+      } else {
+        // Show alert only if the user is redirected to login
+        const redirected = sessionStorage.getItem("redirectedToLogin");
+        if (redirected) {
+          alert("You need to be logged in to access this page.");
+          sessionStorage.removeItem("redirectedToLogin"); // Remove the session flag
+        }
+      }
     }
-  }, [isSuccess, router]);
+  }, [router]);
 
   const handleLogin = async (data: { email: string; password?: string }) => {
     const res = await fetch("/api/auth/password/login", {
@@ -32,6 +40,7 @@ const Login: React.FC = () => {
       // Persist login status in UserSession
       UserSession.getInstance().login(); 
       setIsSuccess(true);
+      router.push("/pages/home");
     } else {
       UserSession.getInstance().logout(); // Ensure any failed login clears session
       setIsSuccess(false);
