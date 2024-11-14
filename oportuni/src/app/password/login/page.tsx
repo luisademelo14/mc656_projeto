@@ -13,16 +13,9 @@ const Login: React.FC = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (typeof window !== "undefined") { // Check if running on the client side
+    if (typeof window !== "undefined") {
       if (UserSession.getInstance().isUserAuthenticated()) {
         router.push("/pages/home");
-      } else {
-        // Show alert only if the user is redirected to login
-        const redirected = sessionStorage.getItem("redirectedToLogin");
-        if (redirected) {
-          alert("You need to be logged in to access this page.");
-          sessionStorage.removeItem("redirectedToLogin"); // Remove the session flag
-        }
       }
     }
   }, [router]);
