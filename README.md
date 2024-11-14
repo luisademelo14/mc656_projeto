@@ -32,7 +32,17 @@ O estilo arquitetural Model-View-Controller (MVC) foi escolhido para este projet
 
 O MVC foi escolhido por permitir uma clara separação de responsabilidades, o que facilita a manutenção e evolução do sistema. Ele também suporta o desenvolvimento modular, onde a camada de apresentação pode ser alterada sem impactar diretamente a lógica de negócios.
 
-**Padrão de projeto escolhido**: Observer (Publish/Subscribe)
+**Padrão de projeto escolhido** (já implementado): Singleton
+<!-- Descrição do Padrão: -->
+Para o login e verificação de autenticação do usuário, usuamos um singleton com uma instância única, um booleano isAtuthenticated e um localStorage para que o usuário não seja deslogado sempre que recarrega a página. Esse padrão permite que protejamos páginas que não devem ser visualizadas, como a 'profile', por usuários que não estão logados. O Singleton também garante que teremos somente uma instância durante a execução, ou seja, que somente um usuário esteja logado em um dado momento.
+
+<!-- Como funciona e justificativa -->
+>**Funcionamento**: Sempre que um usuário realiza seu login, o Singleton armazena a informação de que ele está logado e permite que essa verificação seja realizada em qualquer página do projeto. Também criamos um AuthGuard, que verifica se o usuário está logado e, caso não esteja, o envia diretamente para a página de login. Quando um usuário tenta acessar uma página que não permitimos sem que tenha feito login, o AuthGuard o redireciona para a página de login. Além disso, é possível deslogar um usuário facilmente trocando a flag isAuthenticated para false.
+
+>**Justificativa**: O Singleton permite que somente uma instância de sessão de usuário seja criado a cada vez, impossibilitando uma situação de diversos logins ao mesmo tempo. Além disso, permite uma maneira simples de verificar se o usuário está logado em qualquer momento.
+
+
+**Padrão de projeto escolhido** (ainda não foi implementado): Observer (Publish/Subscribe)
 
 <!-- Descrição do Padrão: -->
 Para o componente de comunidade, onde o usuário pode ver as atividades dos amigos, o padrão de projeto Observer (Publish/Subscribe) foi escolhido. Esse padrão permite que objetos sejam assinantes de eventos gerados por outros objetos. No contexto da plataforma desenvolvida pelo nosso grupo, quando um usuário se inscreve em um projeto, os amigos do usuário podem ficar sabendo de tal informação através da página de "comunidade" da plataforma.
