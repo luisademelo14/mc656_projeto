@@ -4,8 +4,12 @@ class UserSession {
     private isAuthenticated: boolean;
   
     private constructor() {
-      // Check localStorage for previous authentication status
-      this.isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+      // Check if running in a browser before accessing localStorage
+      if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+        this.isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+      } else {
+        this.isAuthenticated = false; // Default to false if not in a browser
+      }
     }
   
     static getInstance(): UserSession {
@@ -16,13 +20,17 @@ class UserSession {
     }
   
     login() {
-      this.isAuthenticated = true;
-      localStorage.setItem("isAuthenticated", "true"); // Persist login status
+      if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+        this.isAuthenticated = true;
+        localStorage.setItem("isAuthenticated", "true"); // Persist login status
+      }
     }
   
     logout() {
-      this.isAuthenticated = false;
-      localStorage.removeItem("isAuthenticated"); // Clear login status
+      if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+        this.isAuthenticated = false;
+        localStorage.removeItem("isAuthenticated"); // Clear login status
+      }
     }
   
     isUserAuthenticated(): boolean {
