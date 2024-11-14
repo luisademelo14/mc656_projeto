@@ -15,7 +15,11 @@ const Search = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch(`/api/project/projects?category=${valorDaBusca}`, { // Passa o filtro de categoria
+        const url = valorDaBusca
+        ? `/api/project/projects?category=${valorDaBusca}`
+        : `/api/project/projects`; // Fetch all projects if no search term
+
+        const response = await fetch(url, { // Passa o filtro de categoria
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });
@@ -33,13 +37,8 @@ const Search = () => {
       }
     };
 
-    if (valorDaBusca) {
-      fetchProjects(); // Chama a API para buscar os projetos filtrados
-    } else {
-      setProjects([]); // Caso o valor da busca esteja vazio, não exibe projetos
-      setLoading(false);
-    }
-  }, [valorDaBusca]); // O efeito é disparado quando `valorDaBusca` mudar
+    fetchProjects(); // Fetch projects on initial load or search change
+  }, [valorDaBusca]);
 
   return (
     <Box>
