@@ -4,20 +4,21 @@ import AuthForm from "../../../components/AuthForm";
 import Link from "next/link";
 import { Box } from "@mui/material";
 import '../recovery/styles.css';
-import { useRouter } from "next/navigation"; // Import useRouter to handle navigation
+import { useRouter } from "next/navigation";
+import UserSession from "@/src/components/UserSession"; // Import the Singleton
 
 const Login: React.FC = () => {
   const [message, setMessage] = useState("");
-  const [isSuccessful, setIsSuccessful] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const router = useRouter(); // Initialize useRouter
+  const router = useRouter();
 
   useEffect(() => {
-    // Perform redirection only after successful login
-    if (isSuccess) {
-      router.push("/pages/home"); // Redirect to /home after success
+    if (typeof window !== "undefined") {
+      if (UserSession.getInstance().isUserAuthenticated()) {
+        router.push("/pages/home");
+      }
     }
-  }, [isSuccess, router]); // Dependency array to re-run the effect only when isSuccess changes
+  }, [router]);
 
   const handleLogin = async (data: { email: string; password?: string }) => {
     const res = await fetch("/api/auth/password/login", {
@@ -29,26 +30,29 @@ const Login: React.FC = () => {
     setMessage(result.message);
 
     if (res.status === 200) {
-      setIsSuccessful(true);
-      setIsSuccess(true); // This will trigger the redirect
+      // Persist login status in UserSession
+      UserSession.getInstance().login(); 
+      setIsSuccess(true);
+      router.push("/pages/home");
     } else {
+      UserSession.getInstance().logout(); // Ensure any failed login clears session
       setIsSuccess(false);
     }
   };
 
   return (
     <Box
-      alignItems={'center'}     // Center vertically
-      justifyContent={'center'} // Center horizontally
+      alignItems={'center'}
+      justifyContent={'center'}
       display="flex"
       sx={{
         backgroundImage: 'url(/imagens/fundo.jpg)',
-        backgroundSize: 'cover', // Melhor para imagem de fundo
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
         minHeight: '100vh',
-        width: '100vw', // Garantir que a largura da página seja 100% da tela
-        flexDirection: 'column', // Alinhar os elementos em coluna
-        overflow: 'auto', // Evitar overflow de conteúdo
+        width: '100vw',
+        flexDirection: 'column',
+        overflow: 'auto',
       }}
     >
       <Box
@@ -61,9 +65,9 @@ const Login: React.FC = () => {
         className="default-text bold-text large-text"
         p={2}
       >
-        {isSuccessful ? (
+        {UserSession.getInstance().isUserAuthenticated() ? (
           <Box display="flex" justifyContent="center" alignItems="center">
-            <p>Bem-vindo!</p>
+            <p>Bem-vindo de volta!</p>
           </Box>
         ) : (
           <Box className="default-text">
