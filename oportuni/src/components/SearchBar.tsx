@@ -15,7 +15,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   };
 
   return (
-    <div className="w-full fixed top-0 left-0 z-50 bg-white shadow-md">
+    <div className="w-full top-100 left-0 z-50 bg-[#033649] shadow-md pt-16">
       <div className="flex items-center justify-center p-4 max-w-screen-xl mx-auto">
         {/* Barra de pesquisa com ícone */}
         <div className="relative w-80">

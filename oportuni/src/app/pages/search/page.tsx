@@ -48,9 +48,9 @@ const Search = () => {
       </div>
 
       {/* Espaço para compensar a altura do Header fixo */}
-      <div className="pt-20">
+      <div>
         {/* Barra de pesquisa */}
-        <div className="relative z-40 mt-4">
+        <div className="">
           <SearchBar onSearch={(query: string) => setValorDaBusca(query)} />
         </div>
 
