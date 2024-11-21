@@ -1,14 +1,14 @@
 "use client";
-import Footer from '@/src/components/Footer';
 import Box from '@mui/material/Box';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import SearchBar from '@/src/components/SearchBar';
-import { IProject } from '@/src/models/Project'; // Definir a interface de Projeto
+import Header from '@/src/components/Header';
+import { IProject } from '@/src/models/Project';
 
 const Search = () => {
-  const [valorDaBusca, setValorDaBusca] = React.useState<string>("");  // O valor do filtro de busca
-  const [projects, setProjects] = useState<IProject[]>([]);  // Armazenar os projetos filtrados
+  const [valorDaBusca, setValorDaBusca] = React.useState<string>(""); 
+  const [projects, setProjects] = useState<IProject[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -16,10 +16,10 @@ const Search = () => {
     const fetchProjects = async () => {
       try {
         const url = valorDaBusca
-        ? `/api/project/projects?category=${valorDaBusca}`
-        : `/api/project/projects`; // Fetch all projects if no search term
+          ? `/api/project/projects?category=${valorDaBusca}`
+          : `/api/project/projects`;
 
-        const response = await fetch(url, { // Passa o filtro de categoria
+        const response = await fetch(url, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });
@@ -37,14 +37,25 @@ const Search = () => {
       }
     };
 
-    fetchProjects(); // Fetch projects on initial load or search change
+    fetchProjects();
   }, [valorDaBusca]);
 
   return (
     <Box>
-      <SearchBar onSearch={(query: string) => setValorDaBusca(query)} />
-      <Box className="flex flex-col justify-between min-h-screen w-full bg-white mt-20">
-        <main className="flex-grow p-8">
+      {/* Header fixo no topo */}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Header />
+      </div>
+
+      {/* Espaço para compensar a altura do Header fixo */}
+      <div>
+        {/* Barra de pesquisa */}
+        <div className="">
+          <SearchBar onSearch={(query: string) => setValorDaBusca(query)} />
+        </div>
+
+        {/* Conteúdo principal */}
+        <Box className="flex flex-col justify-between min-h-screen w-full bg-white p-8">
           {loading ? (
             <p>Carregando...</p>
           ) : error ? (
@@ -74,10 +85,8 @@ const Search = () => {
               )}
             </div>
           )}
-        </main>
-
-        <Footer /> {/* Reusable Footer component */}
-      </Box>
+        </Box>
+      </div>
     </Box>
   );
 };
