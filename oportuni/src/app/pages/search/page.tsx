@@ -7,7 +7,8 @@ import Header from '@/src/components/Header';
 import { IProject } from '@/src/models/Project';
 
 const Search = () => {
-  const [valorDaBusca, setValorDaBusca] = React.useState<string>(""); 
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [category, setCategory] = useState<string>(""); // New state for category
   const [projects, setProjects] = useState<IProject[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -15,10 +16,7 @@ const Search = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const url = valorDaBusca
-          ? `/api/project/projects?category=${valorDaBusca}`
-          : `/api/project/projects`;
-
+        const url = `/api/project/projects?name=${searchValue}&category=${category}&limit=4`;
         const response = await fetch(url, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
@@ -38,23 +36,36 @@ const Search = () => {
     };
 
     fetchProjects();
-  }, [valorDaBusca]);
+  }, [searchValue, category]); // Re-fetch whenever searchValue or category changes
 
   return (
     <Box>
-      {/* Header fixo no topo */}
+      {/* Fixed Header */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <Header />
       </div>
 
-      {/* Espaço para compensar a altura do Header fixo */}
       <div>
-        {/* Barra de pesquisa */}
-        <div className="">
-          <SearchBar onSearch={(query: string) => setValorDaBusca(query)} />
+        {/* Search Bar */}
+        <div>
+          <SearchBar onSearch={(query: string) => setSearchValue(query)} />
         </div>
 
-        {/* Conteúdo principal */}
+        {/* Category Filter */}
+        <div className="mt-4 flex justify-start items-center pl-10">
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="select select-bordered bg-white text-gray-700 p-3 pl-4 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          >
+            <option value="">Todas as Categorias</option>
+            <option value="ONU">Simulações da ONU</option>
+            <option value="Programação">Programação</option>
+            <option value="Tecnologia">Tecnologia</option>
+          </select>
+        </div>
+
+        {/* Main Content */}
         <Box className="flex flex-col justify-between min-h-screen w-full bg-white p-8">
           {loading ? (
             <p>Carregando...</p>
