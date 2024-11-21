@@ -87,7 +87,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           <Box display="flex" alignItems="center" mb={4}>
             <CalendarDaysIcon className="h-6 w-6 text-gray-700 mr-2" />
             <Typography variant="body1" className="text-lg text-gray-700">
-              {project?.startDate ? new Date(project.startDate).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' }) : 'N/A'}
+              <strong> Prazo de Inscrição: </strong>{project?.deadline ? new Date(project.deadline).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' }) : 'N/A'}
             </Typography>
           </Box>
 
@@ -95,7 +95,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           <Box display="flex" alignItems="center" mb={6}>
             <MapPinIcon className="h-6 w-6 text-gray-700 mr-2" />
             <Typography variant="body1" className="text-lg text-gray-700">
-              Online
+              <strong> Localização: </strong>Online
             </Typography>
           </Box>
 
@@ -109,7 +109,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           {/* Detalhes do Projeto */}
           <Box className="bg-white text-[#031634] rounded-md p-6 space-y-4">
             <Typography variant="subtitle1" component="p">
-              <strong>Data de Início:</strong> {project?.startDate ? new Date(project.startDate).toLocaleDateString() : 'N/A'}
+              <strong>Data de Início:</strong> {project?.startDate ? new Date(project.startDate).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' }) : 'N/A'}
             </Typography>
             <Typography variant="subtitle1" component="p">
               <strong>Idade Mínima:</strong> {project?.minAge}
