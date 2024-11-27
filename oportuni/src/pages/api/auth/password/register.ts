@@ -19,6 +19,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     userData[key] = req.body[key];
   }
+  
+  // Validate the email field
+  const email = userData.email;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ message: "E-mail inválido" });
+  }
+
+  // Validate the password field
+  const password = userData.password;
+  if (password && password.length < 6) {
+    return res.status(400).json({ message: "A senha deve ter pelo menos 6 caracteres" });
+  }
 
   // Validate the birthdate field
   const birthdate = userData.birthdate;

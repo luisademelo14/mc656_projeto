@@ -91,4 +91,70 @@ describe('Register API', () => {
     expect(res._getStatusCode()).toBe(400);
     expect(res._getJSONData()).toEqual({ message: 'Data de nascimento inválida' });
   });
+  
+ // 6 - Tabela de decisão: Senha fraca e data inválida
+ it('should return 400 for valid email, weak password, and invalid date format', async () => {
+  User.findOne.mockResolvedValue(null);
+  const { req, res } = createRequestResponse('POST', {
+    name: 'Test User',
+    email: 'valid@example.com',
+    password: '12345', // Fraca
+    nivelescolar: 'Ensino Médio',
+    birthdate: '01/01/2000', // Formato inválido
+  });
+  await register(req, res);
+  expect(res._getStatusCode()).toBe(400);
+  expect(res._getJSONData()).toEqual({ message: 'A senha deve ter pelo menos 6 caracteres' });
+});
+
+// 7 - Tabela de decisão: Data de nascimento futura
+it('should return 400 for valid email, strong password, and future date', async () => {
+  User.findOne.mockResolvedValue(null);
+  const futureDate = new Date();
+  futureDate.setFullYear(futureDate.getFullYear() + 1); // Data futura
+  const formattedDate = futureDate.toLocaleDateString('pt-BR').replace(/\//g, '-');
+  
+  const { req, res } = createRequestResponse('POST', {
+    name: 'Test User',
+    email: 'valid@example.com',
+    password: 'StrongPass123!', // Forte
+    nivelescolar: 'Ensino Superior',
+    birthdate: formattedDate,
+  });
+  await register(req, res);
+  expect(res._getStatusCode()).toBe(400);
+  expect(res._getJSONData()).toEqual({ message: 'Data de nascimento inválida' });
+});
+
+// 8 - Tabela de decisão: E-mail inválido e data inválida
+it('should return 400 for invalid email, weak password, and invalid date format', async () => {
+  const { req, res } = createRequestResponse('POST', {
+    name: 'Test User',
+    email: 'invalid-email', // Inválido
+    password: '12345', // Fraca
+    nivelescolar: 'Ensino Médio',
+    birthdate: '01-32-2000', // Data inválida
+  });
+  await register(req, res);
+  expect(res._getStatusCode()).toBe(400);
+  expect(res._getJSONData()).toEqual({ message: 'E-mail inválido' });
+});
+
+// 9 - Tabela de decisão: E-mail inválido e data futura
+it('should return 400 for invalid email, strong password, and future date', async () => {
+  const futureDate = new Date();
+  futureDate.setFullYear(futureDate.getFullYear() + 1); // Data futura
+  const formattedDate = futureDate.toLocaleDateString('pt-BR').replace(/\//g, '-');
+
+  const { req, res } = createRequestResponse('POST', {
+    name: 'Test User',
+    email: 'invalid-email', // Inválido
+    password: 'StrongPass123!', // Forte
+    nivelescolar: 'Ensino Médio',
+    birthdate: formattedDate,
+  });
+  await register(req, res);
+  expect(res._getStatusCode()).toBe(400);
+  expect(res._getJSONData()).toEqual({ message: 'E-mail inválido' });
+  });
 });
