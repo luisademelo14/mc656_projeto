@@ -1,50 +1,53 @@
 "use client";
-import Box from '@mui/material/Box';
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Header from '@/src/components/Header';
-import { IProject } from '@/src/models/Project';
+import Box from "@mui/material/Box";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { useSession } from "next-auth/react";
+import Header from "@/src/components/Header";
+import { IProject } from "@/src/models/Project";
 
 const Favorites = () => {
+  const { data: session, status } = useSession();
   const [projects, setProjects] = useState<IProject[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchFavorites = async () => {
-      try {
-        const userId = "USER_ID_AQUI"; // Substitua pelo ID do usuário autenticado
-        const url = `/api/project/favorites?userId=${userId}`;
-        const response = await fetch(url, {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        });
-        if (!response.ok) {
-          throw new Error("Erro ao carregar favoritos");
+    if (status === "authenticated" && session?.user?.id) {
+      const fetchFavorites = async () => {
+        try {
+          const response = await fetch(`/api/project/favorites?userId=${session.user.id}`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          });
+          if (!response.ok) {
+            throw new Error("Erro ao carregar projetos favoritos");
+          }
+          const data = await response.json();
+          setProjects(data);
+        } catch (err) {
+          console.error("Erro ao carregar favoritos:", err);
+          setError("Falha ao carregar os projetos favoritos.");
+        } finally {
+          setLoading(false);
         }
+      };
 
-        const data = await response.json();
-        setProjects(data);
-        setLoading(false);
-      } catch (err) {
-        console.error("Erro ao carregar favoritos:", err);
-        setError("Falha ao carregar os projetos favoritos.");
-        setLoading(false);
-      }
-    };
+      fetchFavorites();
+    }
+  }, [session, status]);
 
-    fetchFavorites();
-  }, []);
+  if (status === "loading") return <p>Carregando sessão...</p>;
 
   return (
     <Box>
-      {/* Header fixo */}
+      {/* Fixed Header */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <Header />
       </div>
 
-      {/* Conteúdo principal */}
-      <Box className="flex flex-col justify-between min-h-screen w-full bg-white p-8 pt-20">
+      {/* Main Content */}
+      <Box className="flex flex-col justify-between min-h-screen w-full bg-white p-8">
         {loading ? (
           <p>Carregando...</p>
         ) : error ? (
