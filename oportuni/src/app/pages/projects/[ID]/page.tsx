@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { IProject } from '@/src/models/Project';
-import { Box, Typography, CircularProgress, Paper } from '@mui/material';
+import { HeartIcon as OutlinedHeartIcon, HeartIcon as FilledHeartIcon } from "@heroicons/react/24/solid";
+import { Box, Typography, CircularProgress, Paper, IconButton  } from '@mui/material';
 import { CalendarDaysIcon, MapPinIcon } from '@heroicons/react/24/solid';
 import Header from "@/src/components/Header";
 
@@ -14,6 +15,8 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const [project, setProject] = useState<IProject | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  const [favoriteLoading, setFavoriteLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -29,6 +32,17 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
         const data = await response.json();
         setProject(data);
+        // Verificar se o projeto é favorito
+        const favoriteResponse = await fetch(`/api/project/projects?ID=${ID}`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        });
+
+        if (favoriteResponse.ok) {
+          const favoriteData = await favoriteResponse.json();
+          setIsFavorite(favoriteData.isFavorite);
+        }
         setLoading(false);
       } catch (err) {
         console.error("Erro ao carregar o projeto:", err);
@@ -39,6 +53,29 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
     fetchProject();
   }, [ID]);
+
+  const toggleFavorite = async () => {
+    setFavoriteLoading(true);
+    try {
+      const response = await fetch(`/api/project/projects`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ projectId: project?.ID }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao atualizar favoritos");
+      }
+
+      const data = await response.json();
+      setIsFavorite(data.isFavorite);
+    } catch (error) {
+      console.error("Erro ao alternar favorito:", error);
+    } finally {
+      setFavoriteLoading(false);
+    }
+  };
 
   if (loading) return <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh"><CircularProgress /></Box>;
   if (error) return <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh"><Typography color="error">{error}</Typography></Box>;
@@ -57,6 +94,8 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           elevation={3}
           className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8"
         >
+
+
           {/* Título do Projeto */}
           <Typography 
             variant="h4" 
@@ -83,6 +122,19 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
             Inscrições abertas
           </Box>
 
+          {/* Botão de favoritar */}
+          <IconButton
+            onClick={toggleFavorite}
+            disabled={favoriteLoading}
+            className="absolute top-0 left-full transform -translate-x-10 -translate-y-4"
+          >
+            {isFavorite ? (
+              <FilledHeartIcon className="h-8 w-8 text-red-500" />
+            ) : (
+              <OutlinedHeartIcon className="h-8 w-8 text-gray-500 hover:text-red-500" />
+            )}
+          </IconButton>
+          
           {/* Data do evento */}
           <Box display="flex" alignItems="center" mb={4}>
             <CalendarDaysIcon className="h-6 w-6 text-gray-700 mr-2" />

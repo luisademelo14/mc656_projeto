@@ -1,6 +1,26 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "@/src/lib/mongodb";
 import Project from "@/src/models/Project";
+import User from "@/src/models/User";
+
+const toggleFavorite = async (userId: string, projectId: number) => {
+  await dbConnect();
+  const user = await User.findById(userId);
+
+  if (!user) throw new Error("Usuário não encontrado");
+
+  const isFavorite = user.favorites.includes(projectId);
+
+  if (isFavorite) {
+    user.favorites = user.favorites.filter((id) => id !== projectId);
+  } else {
+    user.favorites.push(projectId);
+  }
+
+  await user.save();
+
+  return !isFavorite;
+};
 
 const getAllProjects = async (filter = {}, limit = 10) => {
   await dbConnect();
@@ -28,8 +48,7 @@ const getProjectById = async (ID: number) => {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-
-  const { limit  } = req.query;
+  const { limit } = req.query;
   const { ID, name, category } = req.query;
 
   if (req.method === "GET") {
@@ -54,6 +73,42 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } catch (error) {
       console.error("Erro ao buscar projetos:", error);
       res.status(500).json({ message: "Erro ao buscar os projetos", error });
+    }
+  
+  } else if (req.method === "GET" && req.query.ID) {
+    try {
+      const userId = req.cookies.userId;
+      if (!userId) {
+        return res.status(401).json({ message: "Usuário não autenticado" });
+      }
+  
+      const projectId = req.query.ID;
+      const user = await User.findById(userId);
+      if (!user) {
+        return res.status(404).json({ message: "Usuário não encontrado" });
+      }
+  
+      const isFavorite = user.favorites.includes(Number(projectId));
+      return res.status(200).json({ isFavorite });
+    } catch (error) {
+      console.error("Erro ao verificar favorito:", error);
+      res.status(500).json({ message: "Erro ao verificar favorito", error });
+    }
+
+  } else if (req.method === "POST" && req.url?.includes("/api/project/projects")) {
+    try {
+      const { projectId } = req.body;
+      const userId = req.cookies.userId;
+
+      if (!userId) {
+        return res.status(401).json({ message: "Usuário não autenticado" });
+      }
+
+      const isFavorite = await toggleFavorite(String(userId), Number(projectId));
+      return res.status(200).json({ isFavorite });
+    } catch (error) {
+      console.error("Erro ao atualizar favorito:", error);
+      res.status(500).json({ message: "Erro ao atualizar favorito", error });
     }
   } else {
     res.status(405).json({ message: "Método não permitido" });
