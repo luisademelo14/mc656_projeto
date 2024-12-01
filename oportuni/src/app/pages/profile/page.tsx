@@ -8,7 +8,7 @@ const Perfil = () => {
     nomeUsuario: "@julianbarros12",
     email: "julianbarros08@gmail.com",
     bairro: "Aldeota",
-    escola: "Colégio Ari de Sá",
+    escola: "Farias Brito 1º do Brasil",
     escolaridade: "2º ano do Ensino Médio",
     idade: 16,
     projetosAtuais: [

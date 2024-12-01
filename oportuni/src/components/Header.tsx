@@ -1,14 +1,22 @@
 "use client";
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { HomeIcon, MagnifyingGlassIcon, UserGroupIcon, UserIcon, ArrowRightStartOnRectangleIcon } from '@heroicons/react/24/solid';
-import UserSession from '@/src/components/UserSession'; // Import your UserSession singleton
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { 
+  HomeIcon, 
+  MagnifyingGlassIcon, 
+  UserGroupIcon, 
+  UserIcon, 
+  ArrowRightOnRectangleIcon,
+  HeartIcon // Novo ícone para favoritos
+} from "@heroicons/react/24/solid";
+import UserSession from "@/src/components/UserSession"; // Import your UserSession singleton
 
 const links = [
-  { href: '/pages/home', label: 'Início', Icon: HomeIcon },
-  { href: '/pages/search', label: 'Pesquisa', Icon: MagnifyingGlassIcon },
-  { href: '/pages/community', label: 'Comunidade', Icon: UserGroupIcon },
-  { href: '/pages/profile', label: 'Perfil', Icon: UserIcon },
+  { href: "/pages/home", label: "Início", Icon: HomeIcon },
+  { href: "/pages/search", label: "Pesquisa", Icon: MagnifyingGlassIcon },
+  { href: "/pages/community", label: "Comunidade", Icon: UserGroupIcon },
+  { href: "/pages/profile", label: "Perfil", Icon: UserIcon },
+  { href: "/pages/favorites", label: "Favoritos", Icon: HeartIcon }, // Novo link adicionado
 ];
 
 const Header = () => {
@@ -16,14 +24,18 @@ const Header = () => {
   const router = useRouter(); // For navigation after logout
 
   const getLinkClass = (page: string) =>
-    `text-lg font-medium transition duration-300 ease-in-out ${pathname === page ? 'text-[#FFCE6D]' : 'text-[#FEFFF5] hover:text-[#FFCE6D]'}`;
+    `text-lg font-medium transition duration-300 ease-in-out ${
+      pathname === page ? "text-[#FFCE6D]" : "text-[#FEFFF5] hover:text-[#FFCE6D]"
+    }`;
 
   const getIconClass = (page: string) =>
-    `h-5 w-5 transition duration-300 ease-in-out ${pathname === page ? 'text-[#FFCE6D]' : 'text-[#FEFFF5]'}`;
+    `h-5 w-5 transition duration-300 ease-in-out ${
+      pathname === page ? "text-[#FFCE6D]" : "text-[#FEFFF5]"
+    }`;
 
   const handleLogout = () => {
     UserSession.getInstance().logout(); // Clear the session
-    router.push('/password/login'); // Redirect to the login page
+    router.push("/password/login"); // Redirect to the login page
   };
 
   return (
@@ -42,11 +54,11 @@ const Header = () => {
         </div>
       </nav>
       <div className="flex items-center space-x-4">
-        <button 
-          onClick={handleLogout} 
+        <button
+          onClick={handleLogout}
           className="flex items-center space-x-2 text-[#FEFFF5] hover:text-[#FFCE6D] transition duration-300 ease-in-out"
         >
-          <ArrowRightStartOnRectangleIcon className="h-5 w-5" />
+          <ArrowRightOnRectangleIcon className="h-5 w-5" />
           <span className="text-lg">Sair</span>
         </button>
       </div>

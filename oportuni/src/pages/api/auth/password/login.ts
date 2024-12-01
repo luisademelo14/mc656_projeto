@@ -20,5 +20,9 @@ export default async function handler(
   if (!isValidPassword) {
     return res.status(402).json({ message: "Senha inválida" });
   }
+
+  // Configurar o cookie com o userId
+  res.setHeader("Set-Cookie", `userId=${user._id}; Path=/; HttpOnly; SameSite=Strict;`);
+
   return res.status(200).json({ message: "Login realizado com sucesso!" });
 }

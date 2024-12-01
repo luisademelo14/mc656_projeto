@@ -7,22 +7,23 @@ import Project from "@/src/models/Project";
 const getFavoritesByUserId = async (userId: string, limit = 10) => {
   await dbConnect();
   try {
-    // Busca os IDs dos projetos favoritados pelo usuário
-    const favoriteEntries = await Favorite.find({ userId }).lean<IFavorite[]>();
+    console.log("Buscando favoritos para o usuário:", userId);
 
+    const favoriteEntries = await Favorite.find({ userId }).lean<IFavorite[]>();
+    console.log("Favoritos encontrados:", favoriteEntries);
 
     if (favoriteEntries.length === 0) {
-      return []; // Retorna vazio se não houver favoritos
+      return [];
     }
 
-    // Extrai os IDs dos projetos favoritados
     const favoriteProjectIds = favoriteEntries.map((fav) => fav.projectId);
+    console.log("IDs dos projetos favoritos:", favoriteProjectIds);
 
-    // Busca os detalhes dos projetos pelo ID
     const projects = await Project.find({ ID: { $in: favoriteProjectIds } })
-      .sort({ createdAt: -1 }) // Ordena por data de criação (mais recentes primeiro)
+      .sort({ createdAt: -1 })
       .limit(limit)
       .lean();
+    console.log("Projetos retornados:", projects);
 
     return projects;
   } catch (error) {
@@ -33,15 +34,18 @@ const getFavoritesByUserId = async (userId: string, limit = 10) => {
 
 // Handler da API
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { userId, limit } = req.query;
+  const { limit } = req.query;
 
   if (req.method === "GET") {
+    // Obtém o userId do cookie
+    const userId = req.cookies.userId;
+
     if (!userId) {
-      return res.status(400).json({ message: "O ID do usuário é obrigatório." });
+      return res.status(401).json({ message: "Usuário não autenticado." });
     }
 
     try {
-      const projects = await getFavoritesByUserId(String(userId), Number(limit) || 10);
+      const projects = await getFavoritesByUserId(userId, Number(limit) || 10);
       return res.status(200).json(projects);
     } catch (error) {
       console.error("Erro ao buscar projetos favoritos:", error);
