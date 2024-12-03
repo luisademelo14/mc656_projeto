@@ -4,6 +4,7 @@ import Project from "@/src/models/Project";
 import User from "@/src/models/User";
 
 const toggleFavorite = async (userId: string, projectId: number) => {
+  console.log("Tentando adicionar/remover projeto dos favoritos:", projectId);
   await dbConnect();
   const user = await User.findById(userId);
 
@@ -13,11 +14,14 @@ const toggleFavorite = async (userId: string, projectId: number) => {
 
   if (isFavorite) {
     user.favorites = user.favorites.filter((id) => id !== projectId);
+    console.log("Removendo projeto dos favoritos:", projectId);
   } else {
     user.favorites.push(projectId);
+    console.log("Adicionando projeto aos favoritos:", projectId);
   }
 
   await user.save();
+  console.log("Lista atualizada de favoritos:", user.favorites);
 
   return !isFavorite;
 };
@@ -95,7 +99,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       res.status(500).json({ message: "Erro ao verificar favorito", error });
     }
 
-  } else if (req.method === "POST" && req.url?.includes("/api/project/projects")) {
+  } else if (req.method === "POST") {
     try {
       const { projectId } = req.body;
       const userId = req.cookies.userId;
