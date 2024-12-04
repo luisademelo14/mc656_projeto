@@ -5,6 +5,7 @@ import { HeartIcon as OutlinedHeartIcon, HeartIcon as FilledHeartIcon } from "@h
 import { Box, Typography, CircularProgress, Paper, IconButton  } from '@mui/material';
 import { CalendarDaysIcon, MapPinIcon } from '@heroicons/react/24/solid';
 import Header from "@/src/components/Header";
+import { cookies } from 'next/headers';
 
 interface ProjectPageProps {
   params: { ID: string };
@@ -35,7 +36,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         // Verificar se o projeto é favorito
         const favoriteResponse = await fetch(`/api/project/projects?ID=${ID}`, {
           method: "GET",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", "validation": "true"},
           credentials: "include",
         });
 

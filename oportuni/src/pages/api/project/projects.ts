@@ -57,7 +57,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   if (req.method === "GET") {
     try {
-      if (ID) {
+      if (req.headers["validation"]) {
+        
+        const userId = req.cookies.userId;
+        if (!userId) {
+          return res.status(401).json({ message: "Usuário não autenticado" });
+        }
+    
+        const projectId = req.query.ID;
+        const user = await User.findById(userId);
+        if (!user) {
+          return res.status(404).json({ message: "Usuário não encontrado" });
+        }
+    
+        const isFavorite = user.favorites.includes(Number(projectId));
+        return res.status(200).json({ isFavorite });
+      } else if (ID) {
         const project = await getProjectById(Number(ID));
         if (!project) {
           return res.status(404).json({ message: "Projeto não encontrado" });
@@ -77,26 +92,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } catch (error) {
       console.error("Erro ao buscar projetos:", error);
       res.status(500).json({ message: "Erro ao buscar os projetos", error });
-    }
-  
-  } else if (req.method === "GET" && req.query.ID) {
-    try {
-      const userId = req.cookies.userId;
-      if (!userId) {
-        return res.status(401).json({ message: "Usuário não autenticado" });
-      }
-  
-      const projectId = req.query.ID;
-      const user = await User.findById(userId);
-      if (!user) {
-        return res.status(404).json({ message: "Usuário não encontrado" });
-      }
-  
-      const isFavorite = user.favorites.includes(Number(projectId));
-      return res.status(200).json({ isFavorite });
-    } catch (error) {
-      console.error("Erro ao verificar favorito:", error);
-      res.status(500).json({ message: "Erro ao verificar favorito", error });
     }
 
   } else if (req.method === "POST") {

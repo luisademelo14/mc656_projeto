@@ -47,7 +47,8 @@ const Favorites = () => {
       </div>
 
       {/* Main Content */}
-      <Box className="flex flex-col justify-between min-h-screen w-full text-center bg-white p-8">
+      <Box className="mt-20 flex flex-col justify-start min-h-screen w-full text-center bg-white p-8">
+        <h1 className="text-4xl font-bold">Meus Favoritos</h1>
         {loading ? (
           <p className="my-60">Carregando...</p>
         ) : error ? (
@@ -59,7 +60,7 @@ const Favorites = () => {
                 <p className="my-80">Você ainda não tem favoritos!</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
                 {projects.map((project) => (
                   <div
                     key={project.ID}

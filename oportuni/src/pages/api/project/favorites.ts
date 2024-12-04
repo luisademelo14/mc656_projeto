@@ -4,7 +4,7 @@ import User from "@/src/models/User";
 import Project from "@/src/models/Project";
 
 // Função para buscar os projetos favoritados pelo usuário
-const getFavoritesByUserId = async (userId: string, limit = 10) => {
+const getFavoritesByUserId = async (userId: string) => {
   await dbConnect();
   try {
     console.log("Buscando favoritos para o usuário:", userId);
@@ -24,9 +24,8 @@ const getFavoritesByUserId = async (userId: string, limit = 10) => {
 
     const projects = await Project.find({ ID: { $in: favoriteProjectIds } })
       .sort({ createdAt: -1 })
-      .limit(limit)
       .lean();
-    console.log("Projetos retornados:", projects);
+    // console.log("Projetos retornados:", projects);
 
     return projects;
   } catch (error) {
@@ -37,7 +36,6 @@ const getFavoritesByUserId = async (userId: string, limit = 10) => {
 
 // Handler da API
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { limit } = req.query;
 
   if (req.method === "GET") {
     // Obtém o userId do cookie
@@ -49,7 +47,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-      const projects = await getFavoritesByUserId(userId, Number(limit) || 10);
+      const projects = await getFavoritesByUserId(userId);
       return res.status(200).json(projects);
     } catch (error) {
       console.error("Erro ao buscar projetos favoritos:", error);
