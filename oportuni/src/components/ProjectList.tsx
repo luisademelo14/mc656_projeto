@@ -11,7 +11,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch("/api/project/projects", {
+        const response = await fetch("/api/project/projects?limit=2", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });

@@ -4,6 +4,7 @@ import mongoose, { Document, Model, Schema } from "mongoose";
 export interface IProject extends Document {
   ID: number;                     // ID único do projeto
   startDate: Date;                // Data de início do projeto
+  deadline: Date;                 // Data limite para inscrição
   name: string;                   // Nome do projeto
   description: string;            // Descrição do projeto
   imageUrl: string;               // URL da imagem associada ao projeto
@@ -20,6 +21,7 @@ export interface IProject extends Document {
 const ProjectSchema: Schema<IProject> = new Schema({
   ID: { type: Number, required: true, unique: true },   // ID do projeto, único e obrigatório
   startDate: { type: Date, required: true },            // Data de início do projeto
+  deadline: { type: Date, required: true },             // Data limite para inscrição
   name: { type: String, required: true },               // Nome do projeto
   description: { type: String, required: true },        // Descrição do projeto
   imageUrl: { type: String, required: true },           // URL da imagem associada

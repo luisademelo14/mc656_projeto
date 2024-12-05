@@ -1,21 +1,23 @@
 "use client";
-import Footer from '@/src/components/Footer';
 import Box from '@mui/material/Box';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import SearchBar from '@/src/components/SearchBar';
-import { IProject } from '@/src/models/Project'; // Definir a interface de Projeto
+import Header from '@/src/components/Header';
+import { IProject } from '@/src/models/Project';
 
 const Search = () => {
-  const [valorDaBusca, setValorDaBusca] = React.useState<string>("");  // O valor do filtro de busca
-  const [projects, setProjects] = useState<IProject[]>([]);  // Armazenar os projetos filtrados
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [category, setCategory] = useState<string>(""); // New state for category
+  const [projects, setProjects] = useState<IProject[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch(`/api/project/projects?category=${valorDaBusca}`, { // Passa o filtro de categoria
+        const url = `/api/project/projects?name=${searchValue}&category=${category}&limit=4`;
+        const response = await fetch(url, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });
@@ -33,19 +35,38 @@ const Search = () => {
       }
     };
 
-    if (valorDaBusca) {
-      fetchProjects(); // Chama a API para buscar os projetos filtrados
-    } else {
-      setProjects([]); // Caso o valor da busca esteja vazio, não exibe projetos
-      setLoading(false);
-    }
-  }, [valorDaBusca]); // O efeito é disparado quando `valorDaBusca` mudar
+    fetchProjects();
+  }, [searchValue, category]); // Re-fetch whenever searchValue or category changes
 
   return (
     <Box>
-      <SearchBar onSearch={(query: string) => setValorDaBusca(query)} />
-      <Box className="flex flex-col justify-between min-h-screen w-full bg-white mt-20">
-        <main className="flex-grow p-8">
+      {/* Fixed Header */}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Header />
+      </div>
+
+      <div>
+        {/* Search Bar */}
+        <div>
+          <SearchBar onSearch={(query: string) => setSearchValue(query)} />
+        </div>
+
+        {/* Category Filter */}
+        <div className="mt-4 flex justify-start items-center pl-10">
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="select select-bordered bg-white text-gray-700 p-3 pl-4 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          >
+            <option value="">Todas as Categorias</option>
+            <option value="ONU">Simulações da ONU</option>
+            <option value="Programação">Programação</option>
+            <option value="Tecnologia">Tecnologia</option>
+          </select>
+        </div>
+
+        {/* Main Content */}
+        <Box className="flex flex-col justify-between min-h-screen w-full bg-white p-8">
           {loading ? (
             <p>Carregando...</p>
           ) : error ? (
@@ -75,10 +96,8 @@ const Search = () => {
               )}
             </div>
           )}
-        </main>
-
-        <Footer /> {/* Reusable Footer component */}
-      </Box>
+        </Box>
+      </div>
     </Box>
   );
 };

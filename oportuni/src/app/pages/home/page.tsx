@@ -1,11 +1,12 @@
 import Header from '@/src/components/Header';
-import Footer from '@/src/components/Footer';
 import Projects from '@/src/components/ProjectList';
 import { MagnifyingGlassIcon, UsersIcon, UserIcon, ArrowUpIcon } from '@heroicons/react/24/solid';
+import AuthGuard from '@/src/components/AuthGuard';
 
 const Home = async () => {
   
   return (
+    <AuthGuard>
     <div className="flex flex-col min-h-screen w-full bg-[#FEFFF5]">
       {/* Header fixo no topo da página */}
       <Header />
@@ -85,10 +86,8 @@ const Home = async () => {
           <Projects />
         </section>
       </main>
-
-      {/* Footer fixo no rodapé da página */}
-      {/* <Footer /> */}
     </div>
+    </AuthGuard>
   );
 };
 
