@@ -8,6 +8,8 @@ First, enter the oportuni directory. Using the Node Package Manager (npm), insta
 npm install
 ```
 
+Also, the file `env.local` must contain the `MONGODB_URI` variable, which holds the connection string for a MongoDB database.
+
 To run the application:
 
 ```bash
